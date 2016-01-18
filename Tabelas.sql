@@ -5,5 +5,6 @@
 	senha VARCHAR(20)NOT NULL,		
 	foto VARCHAR (255),
 	tipo VARCHAR (20) NOT NULL,
+	matricula VARCHAR (20) NOT NULL,
 	PRIMARY KEY(id)
 );
