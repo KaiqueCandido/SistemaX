@@ -80,7 +80,7 @@ public class UsuarioDao implements UsuarioDaoIF {
     }
 
     @Override
-    public Usuario pesquisarPorNome(String nome) throws SQLException {
+    public Usuario pesquisarPorNomeDeUsuario(String nome) throws SQLException {
         try {
             String SQL = "select * from usuario where nome ilike '%" + nome + "%'";
 
@@ -97,9 +97,11 @@ public class UsuarioDao implements UsuarioDaoIF {
                 usuario.setFoto(result.getString("foto"));
                 usuario.setTipo(result.getString("tipo"));
                 usuario.setMatricula(result.getString("matricula"));
+
+                return usuario;
             }
 
-            return usuario;
+            return null;
         } finally {
             co.liberar();
         }
@@ -123,9 +125,11 @@ public class UsuarioDao implements UsuarioDaoIF {
                 usuario.setFoto(result.getString("foto"));
                 usuario.setTipo(result.getString("tipo"));
                 usuario.setMatricula(result.getString("matricula"));
+
+                return usuario;
             }
 
-            return usuario;
+            return null;
         } finally {
             co.liberar();
         }
@@ -149,17 +153,47 @@ public class UsuarioDao implements UsuarioDaoIF {
                 usuario.setFoto(result.getString("foto"));
                 usuario.setTipo(result.getString("tipo"));
                 usuario.setMatricula(result.getString("matricula"));
+
+                return usuario;
             }
 
-            return usuario;
+            return null;
         } finally {
             co.liberar();
         }
     }
 
     @Override
-    public boolean logar(String login, String senha) throws SQLException {
-        return true;
+    public Usuario logar(String login, String senha) throws SQLException {
+        try {            
+            if (login.contains("@")) {
+                Usuario u = this.pesquisarPorEmail(login);
+                if (u != null) {
+                    if (u.getSenha().equalsIgnoreCase(senha)) {
+                        return u;
+                    } else {
+                        return null;
+                    }
+                } else {
+                    return null;
+                }
+
+            } else {
+                Usuario u = this.pesquisarPorNomeDeUsuario(login);
+                if (u != null) {                    
+                    if (u.getSenha().equalsIgnoreCase(senha)) {
+                        return u;
+                    } else {
+                        return null;
+                    }
+                } else {
+                    return null;
+                }
+            }
+
+        } finally {
+            co.liberar();
+        }
     }
 
     @Override

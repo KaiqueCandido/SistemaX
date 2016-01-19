@@ -9,19 +9,10 @@ import java.util.List;
 
 public class GerenciadorDeUsuario {
 
-    public void cadastrar(Usuario u) throws SQLException {
-        Usuario novoUsu = new Usuario();
-
-        novoUsu.setEmail(u.getEmail());
-        novoUsu.setNome(u.getNome());
-        novoUsu.setSenha(u.getSenha());
-        novoUsu.setFoto(u.getFoto());
-        novoUsu.setTipo(u.getTipo());
-        novoUsu.setTipo(u.getMatricula());
-
+    public void cadastrar(Usuario u) throws SQLException {       
         DaoFactoryIF fabrica = DaoFactory.creatFactory();
         UsuarioDaoIF usuDao = fabrica.criaUsuarioDao();
-        usuDao.cadastrar(novoUsu);
+        usuDao.cadastrar(u);
     }
 
     public void remover(Usuario u) throws SQLException {
@@ -36,10 +27,10 @@ public class GerenciadorDeUsuario {
         usuDao.atualizar(u);
     }
 
-    public Usuario pesquisarPorNome(String nome) throws SQLException {
+    public Usuario pesquisarPorNomeDeUsuario(String nome) throws SQLException {
         DaoFactoryIF fabrica = DaoFactory.creatFactory();
         UsuarioDaoIF usuDao = fabrica.criaUsuarioDao();
-        return usuDao.pesquisarPorNome(nome);
+        return usuDao.pesquisarPorNomeDeUsuario(nome);
     }
 
     public Usuario pesquisarPorEmail(String email) throws SQLException {
@@ -54,7 +45,7 @@ public class GerenciadorDeUsuario {
         return usuDao.pesquisarPorMatricula(matricula);
     }
 
-    public boolean logar(String login, String senha) throws SQLException {
+    public Usuario logar(String login, String senha) throws SQLException {
         DaoFactoryIF fabrica = DaoFactory.creatFactory();
         UsuarioDaoIF usuDao = fabrica.criaUsuarioDao();
         return usuDao.logar(login, senha);

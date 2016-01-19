@@ -12,13 +12,13 @@ public interface UsuarioDaoIF {
 
     public void atualizar(Usuario u) throws SQLException;
 
-    public Usuario pesquisarPorNome(String nome) throws SQLException;
+    public Usuario pesquisarPorNomeDeUsuario(String nome) throws SQLException;
 
     public Usuario pesquisarPorEmail(String email) throws SQLException;
 
     public Usuario pesquisarPorMatricula(String matricula) throws SQLException;
 
-    public boolean logar(String login, String senha) throws SQLException;
+    public Usuario logar(String login, String senha) throws SQLException;
 
     public List<Usuario> listar() throws SQLException;
 

@@ -12,8 +12,7 @@ public class Usuario {
     private String tipo;
     private String matricula;
 
-    public Usuario(Integer id, String email, String nome, String senha, String foto, String tipo, String matricula) {
-        this.id = id;
+    public Usuario(String email, String nome, String senha, String foto, String tipo, String matricula) {
         this.email = email;
         this.nome = nome;
         this.senha = senha;
@@ -79,6 +78,11 @@ public class Usuario {
 
     public void setMatricula(String matricula) {
         this.matricula = matricula;
+    }
+
+    @Override
+    public String toString() {
+        return "Usuario{" + "id=" + id + ", email=" + email + ", nome=" + nome + ", senha=" + senha + ", foto=" + foto + ", tipo=" + tipo + ", matricula=" + matricula + '}';
     }
 
 }
