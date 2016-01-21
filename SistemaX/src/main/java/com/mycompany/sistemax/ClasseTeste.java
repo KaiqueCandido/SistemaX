@@ -16,14 +16,20 @@ import java.sql.SQLException;
 public class ClasseTeste {
 
     public static void main(String[] args) throws SQLException {
-        GerenciadorDeUsuario gu = new GerenciadorDeUsuario();
+        //GerenciadorDeUsuario gu = new GerenciadorDeUsuario();
+        //gu.cadastrar(new Usuario("email", "kaique Candido", "senha", "foto", "tipo", "matri"));
+
+        String nome = "kaiQue";
+        for (int i = 0; i < nome.length(); i++) {
+            String aux = "" + nome.charAt(i);
+            
+            if (aux.toUpperCase().equals(aux)){
+                System.out.println(aux + " - Maiuscula");
+            }
+            else
+                System.out.println(aux + " - Minuscula");
+        }
         
-        gu.logar("NOME", "senha");
-        
-        gu.logar("kaique25_ci@hotmail.com", "senha");
-        
-        gu.logar("NOME2", "senha");
-        
-        gu.logar("kaique_ci@hotmail.com", "senha");
+
     }
 }

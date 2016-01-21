@@ -9,10 +9,10 @@ import java.util.List;
 
 public class GerenciadorDeUsuario {
 
-    public void cadastrar(Usuario u) throws SQLException {       
+    public boolean cadastrar(Usuario u) throws SQLException {       
         DaoFactoryIF fabrica = DaoFactory.creatFactory();
         UsuarioDaoIF usuDao = fabrica.criaUsuarioDao();
-        usuDao.cadastrar(u);
+        return usuDao.cadastrar(u);
     }
 
     public void remover(Usuario u) throws SQLException {

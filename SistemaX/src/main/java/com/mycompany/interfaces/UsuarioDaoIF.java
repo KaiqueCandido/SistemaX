@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface UsuarioDaoIF {
 
-    public void cadastrar(Usuario u) throws SQLException;
+    public boolean cadastrar(Usuario u) throws SQLException;
 
     public void remover(Usuario u) throws SQLException;
 

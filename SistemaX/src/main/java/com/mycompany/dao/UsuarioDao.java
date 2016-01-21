@@ -26,8 +26,20 @@ public class UsuarioDao implements UsuarioDaoIF {
     }
 
     @Override
-    public void cadastrar(Usuario u) throws SQLException {
+    public boolean cadastrar(Usuario u) throws SQLException {
         try {
+            // Validação de Nome de Usuario
+            String caracteresEspeciais[] = {"%", "-", "$", "_", "#", "@", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", " "};
+            for (int i = 0; i < caracteresEspeciais.length; i++) {
+                if (u.getNome().contains(caracteresEspeciais[i])) {
+                    return false;
+                }
+            }
+
+            if (u.getSenha().length() < 8) {
+                return false;
+            }
+
             String SQL = "insert into usuario(email, nome, senha, foto, tipo, matricula) values (?,?,?,?,?,?)";
 
             pstm = con.prepareStatement(SQL);
@@ -39,10 +51,10 @@ public class UsuarioDao implements UsuarioDaoIF {
             pstm.setString(6, u.getMatricula());
 
             pstm.executeUpdate();
+            return true;
         } finally {
             co.liberar();
         }
-
     }
 
     @Override
@@ -165,7 +177,7 @@ public class UsuarioDao implements UsuarioDaoIF {
 
     @Override
     public Usuario logar(String login, String senha) throws SQLException {
-        try {            
+        try {
             if (login.contains("@")) {
                 Usuario u = this.pesquisarPorEmail(login);
                 if (u != null) {
@@ -180,7 +192,7 @@ public class UsuarioDao implements UsuarioDaoIF {
 
             } else {
                 Usuario u = this.pesquisarPorNomeDeUsuario(login);
-                if (u != null) {                    
+                if (u != null) {
                     if (u.getSenha().equalsIgnoreCase(senha)) {
                         return u;
                     } else {
