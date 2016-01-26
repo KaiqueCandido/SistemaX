@@ -7,6 +7,7 @@ package com.mycompany.sistemax;
 
 import com.mycompany.entidades.Usuario;
 import com.mycompany.gerenciadores.GerenciadorDeUsuario;
+import com.mycompany.validacao.ValidaUsuario;
 import java.sql.SQLException;
 
 /**
@@ -17,19 +18,10 @@ public class ClasseTeste {
 
     public static void main(String[] args) throws SQLException {
         //GerenciadorDeUsuario gu = new GerenciadorDeUsuario();
-        //gu.cadastrar(new Usuario("email", "kaique Candido", "senha", "foto", "tipo", "matri"));
-
-        String nome = "kaiQue";
-        for (int i = 0; i < nome.length(); i++) {
-            String aux = "" + nome.charAt(i);
-            
-            if (aux.toUpperCase().equals(aux)){
-                System.out.println(aux + " - Maiuscula");
-            }
-            else
-                System.out.println(aux + " - Minuscula");
-        }
+        //gu.cadastrar(new Usuario("email", "kaique Candido", "senha", "foto", "tipo", "matri"));        
+                              
         
-
+        
+        
     }
 }
