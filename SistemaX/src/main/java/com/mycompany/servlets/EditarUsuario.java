@@ -3,11 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Servlets;
+package com.mycompany.servlets;
 
 import com.mycompany.entidades.Usuario;
 import com.mycompany.gerenciadores.GerenciadorDeUsuario;
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,44 +19,42 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author NandaPC
  */
-@WebServlet(name = "ExcluirUsuario", urlPatterns = {"/ExcluirUsuario"})
-public class ExcluirUsuario extends HttpServlet {
+@WebServlet(name = "EditarUsuario", urlPatterns = {"/EditarUsuario"})
+public class EditarUsuario extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-                doPost(request, response);
-    } 
+        doPost(request, response);
+    }
     
     protected void doPost(HttpServletRequest request, HttpServletResponse response){
         try {
             
             Usuario user = (Usuario) request.getSession().getAttribute("user");
-            
-            String nome = request.getParameter("nome");
+                       
+            Integer id = user.getId();
             String email = request.getParameter("email");
-            String senha = request.getParameter("senha");
-            String matricula = request.getParameter("matricula");
+            String nome  = request.getParameter("nome");
+            String novaSenha = request.getParameter("novaSenha");
             String tipo = request.getParameter("tipo");
-            String foto = request.getParameter("foto");
+            String matricula = request.getParameter("matricula");
+            String foto = user.getFoto();
             
-            Usuario usuario = new Usuario(email, nome, senha, foto, tipo, matricula);          
+            Usuario novoUsuario = new Usuario();
             
-            GerenciadorDeUsuario gerenciadorDeUsuario = new GerenciadorDeUsuario();
-            gerenciadorDeUsuario.remover(usuario);
+            novoUsuario.setId(id);
+            novoUsuario.setEmail(email);
+            novoUsuario.setNome(nome);
+            novoUsuario.setSenha(novaSenha);
+            novoUsuario.setTipo(tipo);
+            novoUsuario.setMatricula(matricula);
+            novoUsuario.setFoto(foto);
+            
+            GerenciadorDeUsuario gerenciadorUsuario = new GerenciadorDeUsuario();
+            gerenciadorUsuario.atualizar(novoUsuario);
             
         } catch (Exception e) {
         }
     }
-   
 }

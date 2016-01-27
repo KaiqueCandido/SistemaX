@@ -28,19 +28,8 @@ public class UsuarioDao implements UsuarioDaoIF {
     @Override
     public boolean cadastrar(Usuario u) throws SQLException {
         try {
-            // Validação de Nome de Usuario
-            String caracteresEspeciais[] = {"%", "-", "$", "_", "#", "@", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", " "};
-            for (int i = 0; i < caracteresEspeciais.length; i++) {
-                if (u.getNome().contains(caracteresEspeciais[i])) {
-                    return false;
-                }
-            }
 
-            if (u.getSenha().length() < 8) {
-                return false;
-            }
-
-            String SQL = "insert into usuario(email, nome, senha, foto, tipo, matricula) values (?,?,?,?,?,?)";
+            String SQL = "insert into usuario(email, nomedeusuario, senha, foto, tipo, matricula) values (?,?,?,?,?,?)";
 
             pstm = con.prepareStatement(SQL);
             pstm.setString(1, u.getEmail());
@@ -75,7 +64,7 @@ public class UsuarioDao implements UsuarioDaoIF {
     public void atualizar(Usuario u) throws SQLException {
         try {
 
-            String SQL = "update usuario set email=?, nome=? senha=?, foto=?, matricula=? where id=?";
+            String SQL = "update usuario set email=?, nomedeusuario=? senha=?, foto=?, matricula=? where id=?";
 
             pstm = con.prepareStatement(SQL);
             pstm.setString(1, u.getEmail());
@@ -94,7 +83,7 @@ public class UsuarioDao implements UsuarioDaoIF {
     @Override
     public Usuario pesquisarPorNomeDeUsuario(String nome) throws SQLException {
         try {
-            String SQL = "select * from usuario where nome ilike '%" + nome + "%'";
+            String SQL = "select * from usuario where nomedeusuario ilike '%" + nome + "%'";
 
             pstm = con.prepareStatement(SQL);
             ResultSet result = pstm.executeQuery();
@@ -104,7 +93,7 @@ public class UsuarioDao implements UsuarioDaoIF {
             while (result.next()) {
                 usuario.setId(result.getInt("id"));
                 usuario.setEmail(result.getString("email"));
-                usuario.setNome(result.getString("nome"));
+                usuario.setNome(result.getString("nomedeusuario"));
                 usuario.setSenha(result.getString("senha"));
                 usuario.setFoto(result.getString("foto"));
                 usuario.setTipo(result.getString("tipo"));
@@ -132,7 +121,7 @@ public class UsuarioDao implements UsuarioDaoIF {
             while (result.next()) {
                 usuario.setId(result.getInt("id"));
                 usuario.setEmail(result.getString("email"));
-                usuario.setNome(result.getString("nome"));
+                usuario.setNome(result.getString("nomedeusuario"));
                 usuario.setSenha(result.getString("senha"));
                 usuario.setFoto(result.getString("foto"));
                 usuario.setTipo(result.getString("tipo"));
@@ -160,7 +149,7 @@ public class UsuarioDao implements UsuarioDaoIF {
             while (result.next()) {
                 usuario.setId(result.getInt("id"));
                 usuario.setEmail(result.getString("email"));
-                usuario.setNome(result.getString("nome"));
+                usuario.setNome(result.getString("nomedeusuario"));
                 usuario.setSenha(result.getString("senha"));
                 usuario.setFoto(result.getString("foto"));
                 usuario.setTipo(result.getString("tipo"));
@@ -224,7 +213,7 @@ public class UsuarioDao implements UsuarioDaoIF {
 
                 usuario.setId(result.getInt("id"));
                 usuario.setEmail(result.getString("email"));
-                usuario.setNome(result.getString("nome"));
+                usuario.setNome(result.getString("nomedeusuario"));
                 usuario.setSenha(result.getString("senha"));
                 usuario.setFoto(result.getString("foto"));
                 usuario.setTipo(result.getString("tipo"));

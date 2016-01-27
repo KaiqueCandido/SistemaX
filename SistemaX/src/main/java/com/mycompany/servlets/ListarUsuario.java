@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Servlets;
+package com.mycompany.servlets;
 
 import com.mycompany.gerenciadores.GerenciadorDeUsuario;
 import java.io.IOException;

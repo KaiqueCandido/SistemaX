@@ -9,7 +9,11 @@ import com.mycompany.entidades.Feriado;
 import com.mycompany.entidades.Usuario;
 import com.mycompany.gerenciadores.GerenciadorDeFeriado;
 import com.mycompany.gerenciadores.GerenciadorDeUsuario;
+<<<<<<< HEAD
 import java.util.Date;
+=======
+import com.mycompany.validacao.ValidaUsuario;
+>>>>>>> a99d44de8af715fa6dc1c3996186f20430b1595b
 import java.sql.SQLException;
 
 /**
@@ -20,6 +24,7 @@ public class ClasseTeste {
 
     public static void main(String[] args) throws SQLException {
         //GerenciadorDeUsuario gu = new GerenciadorDeUsuario();
+<<<<<<< HEAD
         //gu.cadastrar(new Usuario("email", "kaique Candido", "senha", "foto", "tipo", "matri"));
 
        /* String nome = "kaiQue";
@@ -43,5 +48,12 @@ public class ClasseTeste {
         //gf.atualizar(f);
         //System.out.println(gf.pesquisar("27/01/2016").getNomeFeriado());
         //gf.remover(gf.pesquisar("27/01/2016"));
+=======
+        //gu.cadastrar(new Usuario("email", "kaique Candido", "senha", "foto", "tipo", "matri"));        
+                              
+        
+        
+        
+>>>>>>> a99d44de8af715fa6dc1c3996186f20430b1595b
     }
 }
