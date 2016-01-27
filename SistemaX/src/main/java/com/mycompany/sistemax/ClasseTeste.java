@@ -5,8 +5,11 @@
  */
 package com.mycompany.sistemax;
 
+import com.mycompany.entidades.Feriado;
 import com.mycompany.entidades.Usuario;
+import com.mycompany.gerenciadores.GerenciadorDeFeriado;
 import com.mycompany.gerenciadores.GerenciadorDeUsuario;
+import java.util.Date;
 import java.sql.SQLException;
 
 /**
@@ -19,7 +22,7 @@ public class ClasseTeste {
         //GerenciadorDeUsuario gu = new GerenciadorDeUsuario();
         //gu.cadastrar(new Usuario("email", "kaique Candido", "senha", "foto", "tipo", "matri"));
 
-        String nome = "kaiQue";
+       /* String nome = "kaiQue";
         for (int i = 0; i < nome.length(); i++) {
             String aux = "" + nome.charAt(i);
             
@@ -29,7 +32,15 @@ public class ClasseTeste {
             else
                 System.out.println(aux + " - Minuscula");
         }
+*/
+        Date data = new Date();
         
-
+        Feriado f = new Feriado("FeriadoNovo", data);
+        
+        GerenciadorDeFeriado gf = new GerenciadorDeFeriado();
+        //gf.cadastrar(f);
+        //gf.remover(f);
+        gf.atualizar(f);
+        
     }
 }

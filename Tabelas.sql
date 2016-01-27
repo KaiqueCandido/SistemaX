@@ -8,3 +8,10 @@
 	matricula VARCHAR (20) NOT NULL,
 	PRIMARY KEY(id)
 );
+
+CREATE TABLE Feriado(
+	idFeriado SERIAL NOT NULL,
+	nomeFeriado VARCHAR(60) NOT NULL,
+	dataFeriado DATE NOT NULL,
+	PRIMARY KEY(idFeriado)
+);

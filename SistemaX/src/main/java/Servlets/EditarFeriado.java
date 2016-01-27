@@ -5,9 +5,13 @@
  */
 package Servlets;
 
-import com.mycompany.entidades.Usuario;
-import com.mycompany.gerenciadores.GerenciadorDeUsuario;
+import com.mycompany.entidades.Feriado;
+import com.mycompany.gerenciadores.GerenciadorDeFeriado;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,8 +22,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author NandaPC
  */
-@WebServlet(name = "ExcluirUsuario", urlPatterns = {"/ExcluirUsuario"})
-public class ExcluirUsuario extends HttpServlet {
+@WebServlet(name = "EditarFeriado", urlPatterns = {"/EditarFeriado"})
+public class EditarFeriado extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -30,32 +34,36 @@ public class ExcluirUsuario extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    @Override
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws IOException{
         
-                doPost(request, response);
-    } 
-    
+        doPost(request, response);
+        
+    }
+    /**
+     * 
+     * @param request
+     * @param response 
+     */
     protected void doPost(HttpServletRequest request, HttpServletResponse response){
         try {
             
-            Usuario user = (Usuario) request.getSession().getAttribute("user");
+            String nomeFeriado = request.getParameter("nomeFeriado");
+            String dataFeriado = request.getParameter("dataFeriado");
             
-            String nome = request.getParameter("nome");
-            String email = request.getParameter("email");
-            String senha = request.getParameter("senha");
-            String matricula = request.getParameter("matricula");
-            String tipo = request.getParameter("tipo");
-            String foto = request.getParameter("foto");
+            DateFormat formate = new SimpleDateFormat("dd/MM/yyyy");
+            Date dataConvertida = (Date) formate.parse(dataFeriado);
             
-            Usuario usuario = new Usuario(email, nome, senha, foto, tipo, matricula);          
+            Feriado novoFeriado = new Feriado();
             
-            GerenciadorDeUsuario gerenciadorDeUsuario = new GerenciadorDeUsuario();
-            gerenciadorDeUsuario.remover(usuario);
+            novoFeriado.setNomeFeriado(nomeFeriado);
+            novoFeriado.setDataFeriado(dataConvertida);
+            
+            GerenciadorDeFeriado gerenFeriado = new GerenciadorDeFeriado();
+            gerenFeriado.atualizar(novoFeriado);
             
         } catch (Exception e) {
         }
     }
-   
 }
