@@ -40,7 +40,8 @@ public class ClasseTeste {
         GerenciadorDeFeriado gf = new GerenciadorDeFeriado();
         //gf.cadastrar(f);
         //gf.remover(f);
-        gf.atualizar(f);
-        
+        //gf.atualizar(f);
+        //System.out.println(gf.pesquisar("27/01/2016").getNomeFeriado());
+        //gf.remover(gf.pesquisar("27/01/2016"));
     }
 }

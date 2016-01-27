@@ -10,6 +10,7 @@ import com.mycompany.fabricas.DaoFactory;
 import com.mycompany.fabricas.DaoFactoryIF;
 import com.mycompany.interfaces.FeriadoDaoIF;
 import java.sql.SQLException;
+import java.util.Date;
 
 /**
  *
@@ -49,5 +50,17 @@ public class GerenciadorDeFeriado {
         DaoFactoryIF fabrica = DaoFactory.creatFactory();
         FeriadoDaoIF feriadoDao = fabrica.criaFeriadoDao();
         feriadoDao.atualizar(feriado);
+    }
+    
+   /**
+    * 
+    * @param dataFeriado
+    * @return
+    * @throws SQLException 
+    */
+    public Feriado pesquisar(String dataFeriado) throws SQLException{
+        DaoFactoryIF fabrica = DaoFactory.creatFactory();
+        FeriadoDaoIF feriadoDao = fabrica.criaFeriadoDao();
+        return feriadoDao.pesquisarFeriado(dataFeriado);
     }
 }

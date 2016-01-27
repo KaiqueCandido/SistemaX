@@ -7,6 +7,7 @@ package com.mycompany.interfaces;
 
 import com.mycompany.entidades.Feriado;
 import java.sql.SQLException;
+import java.util.Date;
 
 /**
  *
@@ -38,8 +39,8 @@ public interface FeriadoDaoIF {
     
     /**
      * 
-     * @param feriado
+     * @param dataFeriado
      * @throws SQLException 
      */
-    public void listar (Feriado feriado) throws SQLException;
+    public Feriado pesquisarFeriado (String dataFeriado) throws SQLException;
 }
