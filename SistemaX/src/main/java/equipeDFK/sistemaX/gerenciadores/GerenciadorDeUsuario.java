@@ -45,6 +45,13 @@ public class GerenciadorDeUsuario {
         return usuDao.pesquisarPorMatricula(matricula);
     }
 
+    /**
+     * Função para verificar e auntenticar usuário no sistema
+     * @param login
+     * @param senha
+     * @return {@linkplain Usuario}
+     * @throws SQLException 
+     */
     public Usuario logar(String login, String senha) throws SQLException {
         DaoFactoryIF fabrica = DaoFactory.creatFactory();
         UsuarioDaoIF usuDao = fabrica.criaUsuarioDao();

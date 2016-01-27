@@ -1,5 +1,9 @@
 package equipeDFK.sistemaX.entidades;
 
+/**
+ * Classe que representa entidade Usuario
+ * @author Dijalma Silva <dijalmacz@gmail.com>
+ */
 public class Usuario {
 
     private Integer id;

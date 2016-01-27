@@ -5,6 +5,9 @@
  */
 package equipeDFK.sistemaX.controller;
 
+import equipeDFK.sistemaX.entidades.Usuario;
+import equipeDFK.sistemaX.gerenciadores.GerenciadorDeUsuario;
+import java.sql.SQLException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,14 +20,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ControllerSession {
    
     /**
-     * 
+     * Controla o login no sistema
      * @param usuarioOuEmail
      * @param senha 
      * @param model 
+     * @return  
      */
     @RequestMapping("logar")
-    public void login(String usuarioOuEmail, String senha, Model model){
-        model.addAttribute("login", "dijalma");
+    public String login(String usuarioOuEmail, String senha, Model model) throws SQLException{
+        GerenciadorDeUsuario gu = new GerenciadorDeUsuario();
+        Usuario u = gu.logar(usuarioOuEmail, senha);
+        
+        if (u == null){
+            model.addAttribute("erro", "Usuário ou senha inválidos");
+            return "index";
+        }
+        model.addAttribute("usuario", u);
+        return "home";
     }
     
 }
