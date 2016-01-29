@@ -12,25 +12,16 @@ import java.util.Date;
  * @author NandaPC
  */
 public class Feriado {
-    
-    private int idFeriado;
+
     private String nomeFeriado;
-    private Date dataFeriado;
+    private String dataFeriado;
 
     public Feriado() {
     }
 
-    public Feriado(String nomeFeriado, Date dataFeriado) {
+    public Feriado(String nomeFeriado, String dataFeriado) {
         this.nomeFeriado = nomeFeriado;
         this.dataFeriado = dataFeriado;
-    }
-
-    public int getIdFeriado() {
-        return idFeriado;
-    }
-
-    public void setIdFeriado(int idFeriado) {
-        this.idFeriado = idFeriado;
     }
 
     public String getNomeFeriado() {
@@ -41,13 +32,12 @@ public class Feriado {
         this.nomeFeriado = nomeFeriado;
     }
 
-    public Date getDataFeriado() {
+    public String getDataFeriado() {
         return dataFeriado;
     }
 
-    public void setDataFeriado(Date dataFeriado) {
+    public void setDataFeriado(String dataFeriado) {
         this.dataFeriado = dataFeriado;
     }
-    
-    
+
 }
