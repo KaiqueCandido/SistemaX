@@ -43,7 +43,7 @@
                 </div>
             </div><br>
             <div class="dj-tabela__overflow">
-                <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp dj-tabela__big">
+                <table id="tabela" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp dj-tabela__big">
                     <thead>
                         <tr>
                             <th>Nome</th>

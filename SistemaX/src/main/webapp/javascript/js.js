@@ -16,7 +16,7 @@ $(document).ready(function () {
             escondeMenu();
         }
     });
-    
+
     //upload de imagens
     jQuery(".btn-upload").click(function () {
         jQuery(".inp-upload").trigger('click');
@@ -26,7 +26,7 @@ $(document).ready(function () {
         var arq = jQuery(".inp-upload").val().replace(/^.*\\/, "");
         jQuery(".btn-upload").text(arq);
     });
-    
+
 });
 
 function escondeMenu() {
@@ -36,3 +36,21 @@ function escondeMenu() {
 function adicionarUsuario() {
     $('#novoUser').removeClass('dj-invisible');
 }
+
+$(function () {
+    $("#searchUser").keyup(function () {
+        var index = $(this).parent().index();
+        var nth = "#tabela td:nth-child(" + (index - 1).toString() + ")";
+        var valor = $(this).val().toUpperCase();
+        $("#tabela tbody tr").show();
+        $(nth).each(function () {
+            if ($(this).text().toUpperCase().indexOf(valor) < 0) {
+                $(this).parent().hide();
+            }
+        });
+    });
+
+    $("#searchUser").blur(function () {
+        $(this).val("");
+    });
+});
