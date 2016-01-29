@@ -17,7 +17,7 @@
             <form action="addUsuario" method="post">
                 <input type="file" class="dj-invisible inp-upload" name="foto" onchange="updateLogo(this)"/>
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <input type="text" class="mdl-textfield__input" name="nomeDeUsuario" id="sample1" required="" autofocus="">
+                    <input type="text" class="mdl-textfield__input" name="nome" id="sample1" required="" autofocus="">
                     <label class="mdl-textfield__label" for="sample1">Nome de usuário</label>
                 </div><br>
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
