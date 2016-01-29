@@ -29,6 +29,7 @@ public class Usuario {
     public Usuario() {
     }
 
+
     public Integer getId() {
         return id;
     }
