@@ -15,7 +15,7 @@
     <div class="menuUsuario dj-text__right">
         <div class="dj-float__left">
             <h4>${usuario.nome}</h4>
-            <a href="#">Editar Perfil</a><label> |</label>
+            <a href="adicionarUsuario()">Editar Perfil</a><label> |</label>
             <a href="#">Sair</a>
         </div>
         <div class="">

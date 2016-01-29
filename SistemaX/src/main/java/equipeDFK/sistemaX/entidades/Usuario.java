@@ -2,6 +2,7 @@ package equipeDFK.sistemaX.entidades;
 
 /**
  * Classe que representa entidade Usuario
+ *
  * @author Dijalma Silva <dijalmacz@gmail.com>
  */
 public class Usuario {
@@ -13,14 +14,16 @@ public class Usuario {
     private String foto;
     private String tipo;
     private String matricula;
+    private String status;
 
-    public Usuario(String email, String nome, String senha, String foto, String tipo, String matricula) {
+    public Usuario(String email, String nome, String senha, String foto, String tipo, String matricula, String status) {
         this.email = email;
         this.nome = nome;
         this.senha = senha;
         this.foto = foto;
         this.tipo = tipo;
         this.matricula = matricula;
+        this.status = status;
     }
 
     public Usuario() {
@@ -82,9 +85,17 @@ public class Usuario {
         this.matricula = matricula;
     }
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     @Override
     public String toString() {
-        return "Usuario{" + "id=" + id + ", email=" + email + ", nome=" + nome + ", senha=" + senha + ", foto=" + foto + ", tipo=" + tipo + ", matricula=" + matricula + '}';
+        return "Usuario{" + "id=" + id + ", email=" + email + ", nome=" + nome + ", senha=" + senha + ", foto=" + foto + ", tipo=" + tipo + ", matricula=" + matricula + ", status=" + status + '}';
     }
 
 }

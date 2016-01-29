@@ -11,6 +11,9 @@
     <%@include file="head.jsp" %>
     <body>
         <%@include file="header.jsp" %>
+        <div class="breadcrumb ">
+            <a href="home">Home  ></a><a href="managerUser">Gerenciar Usuário</a>
+        </div>
         <%@include file="novoUsuario.jsp" %>
         <div class="conteudo">
             <div class="crud-user">
@@ -54,64 +57,10 @@
                             <tr>
                                 <td>${usuario.nome}</td>
                                 <td>${usuario.email}</td>
-                                <td>${usuario.papel}</td>
+                                <td>${usuario.tipo}</td>
                                 <td>${usuario.status}</td>
                             </tr>
-                        </c:forEach>
-                            <tr>
-                                <td>Alann</td>
-                                <td>email@servidor.com</td>
-                                <td>ALUNO</td>
-                                <td>Ativo</td>
-                            </tr>
-                            <tr>
-                                <td>Aluísio</td>
-                                <td>email@servidor.com</td>
-                                <td>ALUNO</td>
-                                <td>Ativo</td>
-                            </tr>
-                            <tr>
-                                <td>Asheley</td>
-                                <td>email@servidor.com</td>
-                                <td>ALUNO</td>
-                                <td>Ativo</td>
-                            </tr>
-                            <tr>
-                                <td>Claúdio</td>
-                                <td>email@servidor.com</td>
-                                <td>ALUNO</td>
-                                <td>Ativo</td>
-                            </tr>
-                            <tr>
-                                <td>Dijalma</td>
-                                <td>email@servidor.com</td>
-                                <td>ALUNO</td>
-                                <td>Ativo</td>
-                            </tr>
-                            <tr>
-                                <td>Euller</td>
-                                <td>email@servidor.com</td>
-                                <td>ALUNO</td>
-                                <td>Ativo</td>
-                            </tr>
-                            <tr>
-                                <td>Fernanda</td>
-                                <td>email@servidor.com</td>
-                                <td>ALUNO</td>
-                                <td>Ativo</td>
-                            </tr>
-                            <tr>
-                                <td>Isak</td>
-                                <td>email@servidor.com</td>
-                                <td>ALUNO</td>
-                                <td>Ativo</td>
-                            </tr>
-                            <tr>
-                                <td>Joseph</td>
-                                <td>email@servidor.com</td>
-                                <td>ALUNO</td>
-                                <td>Ativo</td>
-                            </tr>
+                        </c:forEach>                            
                     </tbody>
                 </table>
             </div>

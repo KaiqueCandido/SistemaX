@@ -29,7 +29,7 @@ public class UsuarioDao implements UsuarioDaoIF {
     public boolean cadastrar(Usuario u) throws SQLException {
         try {
 
-            String SQL = "insert into usuario(email, nomedeusuario, senha, foto, tipo, matricula) values (?,?,?,?,?,?)";
+            String SQL = "insert into usuario(email, nomedeusuario, senha, foto, tipo, matricula, status) values (?,?,?,?,?,?,?)";
 
             pstm = con.prepareStatement(SQL);
             pstm.setString(1, u.getEmail());
@@ -38,6 +38,7 @@ public class UsuarioDao implements UsuarioDaoIF {
             pstm.setString(4, u.getFoto());
             pstm.setString(5, u.getTipo());
             pstm.setString(6, u.getMatricula());
+            pstm.setString(7, "Ativo");
 
             pstm.executeUpdate();
             return true;
@@ -98,6 +99,7 @@ public class UsuarioDao implements UsuarioDaoIF {
                 usuario.setFoto(result.getString("foto"));
                 usuario.setTipo(result.getString("tipo"));
                 usuario.setMatricula(result.getString("matricula"));
+                usuario.setStatus(result.getString("status"));
 
                 return usuario;
             }
@@ -126,6 +128,7 @@ public class UsuarioDao implements UsuarioDaoIF {
                 usuario.setFoto(result.getString("foto"));
                 usuario.setTipo(result.getString("tipo"));
                 usuario.setMatricula(result.getString("matricula"));
+                usuario.setStatus(result.getString("status"));
 
                 return usuario;
             }
@@ -154,6 +157,7 @@ public class UsuarioDao implements UsuarioDaoIF {
                 usuario.setFoto(result.getString("foto"));
                 usuario.setTipo(result.getString("tipo"));
                 usuario.setMatricula(result.getString("matricula"));
+                usuario.setStatus(result.getString("status"));
 
                 return usuario;
             }
@@ -218,6 +222,7 @@ public class UsuarioDao implements UsuarioDaoIF {
                 usuario.setFoto(result.getString("foto"));
                 usuario.setTipo(result.getString("tipo"));
                 usuario.setMatricula(result.getString("matricula"));
+                usuario.setStatus(result.getString("status"));
 
                 usuarios.add(usuario);
             }

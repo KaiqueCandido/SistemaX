@@ -5,6 +5,9 @@
  */
 package equipeDFK.sistemaX.controller;
 
+import equipeDFK.sistemaX.gerenciadores.GerenciadorDeUsuario;
+import java.sql.SQLException;
+import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -14,14 +17,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 public class ControllerBreadCrumb {
-    
+
     @RequestMapping("home")
-    public String retornaHome(){
+    public String retornaHome() {
         return "home";
     }
-    
+
     @RequestMapping("managerUser")
-    public String managerUser(){
+    public String managerUser(HttpServletRequest req) throws SQLException {
+        GerenciadorDeUsuario gu = new GerenciadorDeUsuario();
+        req.getSession().setAttribute("usuarios", gu.listar());
         return "managerUser";
+    }
+
+    @RequestMapping("newUser")
+    public String newUser() {
+        return "novoUsuario";
     }
 }

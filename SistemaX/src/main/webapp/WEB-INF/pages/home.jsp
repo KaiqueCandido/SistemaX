@@ -13,6 +13,7 @@
         <div class="breadcrumb ">
             <a href="home">Home</a>
         </div>
+        <%@include file="novoUsuario.jsp" %>
         <hr>
         <div class="conteudo">
             <h4>Funcionalidades</h4>
