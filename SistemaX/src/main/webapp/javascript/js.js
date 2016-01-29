@@ -4,16 +4,35 @@
  * and open the template in the editor.
  */
 
-$(document).ready(function (){
-    
+$(document).ready(function () {
+
     $('.dj-modal__backdrop').click(function () {
-        $('.automatic').addClass('invisible');
+        escondeMenu();
     });
-    
+
     $(document).keyup(function (evt) {
 
         if (evt.keyCode === 27) {
-            $('.automatic').addClass('invisible');
+            escondeMenu();
         }
     });
+    
+    //upload de imagens
+    jQuery(".btn-upload").click(function () {
+        jQuery(".inp-upload").trigger('click');
+    });
+
+    jQuery(".inp-upload").change(function () {
+        var arq = jQuery(".inp-upload").val().replace(/^.*\\/, "");
+        jQuery(".btn-upload").text(arq);
+    });
+    
 });
+
+function escondeMenu() {
+    $('.automatic').addClass('dj-invisible');
+}
+
+function adicionarUsuario() {
+    $('#novoUser').removeClass('dj-invisible');
+}

@@ -4,7 +4,7 @@
     Author     : Dijalma Silva <dijalmacz@gmail.com>
 --%>
 
-<div class="automatic">
+<div class="automatic dj-invisible" id="novoUser">
     <div class="dj-modal__menu">
         <div class="dj-modal__title margin">
             <h4>Novo usuário</h4>
@@ -12,10 +12,10 @@
         </div>
         <div class="dj-text__center carregaImagem margin">
             <img src="imagens/perfil-face.jpg" class="img-perfil__carregar"><br><br>
-            <button class="mdl-button mdl-js-button mdl-button--colored mdl-button--raised mdl-js-ripple-effect">Enviar foto</button>
+            <button class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect btn-upload">Enviar foto</button>
             <br><br><br>
             <form action="addUsuario" method="post">
-                <input type="file" class="dj-invisible" name="foto">
+                <input type="file" class="dj-invisible inp-upload" name="foto">
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                     <input type="text" class="mdl-textfield__input" name="nomeDeUsuario" id="sample1" required="" autofocus="">
                     <label class="mdl-textfield__label" for="sample1">Nome de usuário</label>

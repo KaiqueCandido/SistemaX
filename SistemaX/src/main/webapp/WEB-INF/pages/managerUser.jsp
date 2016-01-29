@@ -15,13 +15,13 @@
         <div class="conteudo">
             <div class="crud-user">
                 <div class="dj-float__left">
-                    <button class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect mdl-button--raised margin " onclick="">
+                    <button class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect mdl-button--raised margin " onclick="adicionarUsuario()">
                         <img src="Icons/ic_add_black_24dp_2x.png" class="material-icons">
                     </button>
-                    <button class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect mdl-button--raised margin" >
+                    <button class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect mdl-button--raised margin" disabled="">
                         <img src="Icons/ic_edit_black_24dp_2x.png" class="material-icons">
                     </button>
-                    <button class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect mdl-button--raised margin" >
+                    <button class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect mdl-button--raised margin" disabled="">
                         <img src="Icons/trash.png" class="material-icons">
                     </button>
                 </div>
