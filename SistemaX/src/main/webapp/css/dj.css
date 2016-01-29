@@ -126,3 +126,11 @@ and open the template in the editor.
 .dj-invisible {
     display: none !important;
 }
+
+.dj-size__small{
+    width: 15px;
+}
+
+.dj-btn{
+    padding: 40px !important;
+}

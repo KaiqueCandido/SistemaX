@@ -43,6 +43,7 @@
                 <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp dj-tabela__big">
                     <thead>
                         <tr>
+                            <th></th>
                             <th>Nome</th>
                             <th>Email</th>
                             <th>Papel</th>
@@ -52,6 +53,7 @@
                     <tbody>
                         <c:forEach items="${usuarios}" var="usuario">
                             <tr>
+                                <td class="dj-size__small"><input type="checkbox" onclick="liberarButton(${usuario.id})" checked=""></td>
                                 <td>${usuario.nome}</td>
                                 <td>${usuario.email}</td>
                                 <td>${usuario.papel}</td>
@@ -59,59 +61,41 @@
                             </tr>
                         </c:forEach>
                             <tr>
+                                <td class="dj-size__small"><input type="checkbox" onclick="liberarButton()"</td>
                                 <td>Alann</td>
                                 <td>email@servidor.com</td>
                                 <td>ALUNO</td>
                                 <td>Ativo</td>
                             </tr>
                             <tr>
-                                <td>Aluísio</td>
+                                <td class="dj-size__small"><input type="checkbox" onclick="liberarButton()"</td>
+                                <td>Alann</td>
                                 <td>email@servidor.com</td>
                                 <td>ALUNO</td>
                                 <td>Ativo</td>
                             </tr>
                             <tr>
-                                <td>Asheley</td>
+                                <td class="dj-size__small"><input type="checkbox" onclick="liberarButton()"</td>
+                                <td>Alann</td>
                                 <td>email@servidor.com</td>
                                 <td>ALUNO</td>
                                 <td>Ativo</td>
                             </tr>
                             <tr>
-                                <td>Claúdio</td>
+                                <td class="dj-size__small"><input type="checkbox" onclick="liberarButton()"</td>
+                                <td>Alann</td>
                                 <td>email@servidor.com</td>
                                 <td>ALUNO</td>
                                 <td>Ativo</td>
                             </tr>
                             <tr>
-                                <td>Dijalma</td>
+                                <td class="dj-size__small"><input type="checkbox" onclick="liberarButton()"</td>
+                                <td>Alann</td>
                                 <td>email@servidor.com</td>
                                 <td>ALUNO</td>
                                 <td>Ativo</td>
                             </tr>
-                            <tr>
-                                <td>Euller</td>
-                                <td>email@servidor.com</td>
-                                <td>ALUNO</td>
-                                <td>Ativo</td>
-                            </tr>
-                            <tr>
-                                <td>Fernanda</td>
-                                <td>email@servidor.com</td>
-                                <td>ALUNO</td>
-                                <td>Ativo</td>
-                            </tr>
-                            <tr>
-                                <td>Isak</td>
-                                <td>email@servidor.com</td>
-                                <td>ALUNO</td>
-                                <td>Ativo</td>
-                            </tr>
-                            <tr>
-                                <td>Joseph</td>
-                                <td>email@servidor.com</td>
-                                <td>ALUNO</td>
-                                <td>Ativo</td>
-                            </tr>
+                            
                     </tbody>
                 </table>
             </div>

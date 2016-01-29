@@ -29,7 +29,7 @@
                     <label class="mdl-textfield__label" for="sample3">Email</label>
                 </div><br>
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <input type="text" class="mdl-textfield__input" name="matricula" id="sample4" required="">
+                    <input type="text" class="mdl-textfield__input" name="matricula" id="sample4" required="" maxlength="6">
                     <label class="mdl-textfield__label" for="sample4">Matrícula</label>
                 </div><br>
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
@@ -39,6 +39,11 @@
                 <div class="botoes-fechar dj-text__right">
                     <button type="submit" class="mdl-button mdl-button mdl-button--colored mdl-button--raised">Cadastrar</button>
                 </div>
+                <datalist id="tipos">
+                    <option value="Administrador"></option>
+                    <option value="Aluno"></option>
+                    
+                </datalist>
             </form>
 
         </div>
