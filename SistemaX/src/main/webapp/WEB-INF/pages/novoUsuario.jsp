@@ -11,13 +11,13 @@
             <hr>
         </div>
         <div class="dj-text__center carregaImagem margin">
-            <img src="imagens/perfil-face.jpg" class="img-perfil__carregar"><br><br>
+            <img src="imagens/perfil-face.jpg" class="img-perfil__carregar" id="image"><br><br>
             <button class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect btn-upload">Enviar foto</button>
             <br><br><br>
             <form action="addUsuario" method="post">
-                <input type="file" class="dj-invisible inp-upload" name="foto">
+                <input type="file" class="dj-invisible inp-upload" name="foto" onchange="updateLogo(this)"/>
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <input type="text" class="mdl-textfield__input" name="nomeDeUsuario" id="sample1" required="" autofocus="">
+                    <input type="text" class="mdl-textfield__input" name="nome" id="sample1" required="" autofocus="">
                     <label class="mdl-textfield__label" for="sample1">Nome de usuário</label>
                 </div><br>
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
@@ -40,8 +40,17 @@
                     <button type="submit" class="mdl-button mdl-button mdl-button--colored mdl-button--raised">Cadastrar</button>
                 </div>
             </form>
-            
+
         </div>
     </div>
     <div class="dj-modal__backdrop"></div>
 </div>
+<script>
+    function updateLogo(input) {
+        var reader = new FileReader(this);
+        reader.onload = function (e) {
+            $("#image").attr("src", e.target.result);
+        };
+        reader.readAsDataURL(input.files[0]);
+    }
+</script>
