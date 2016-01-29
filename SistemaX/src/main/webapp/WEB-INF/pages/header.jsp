@@ -19,7 +19,7 @@
             <a href="#">Sair</a>
         </div>
         <div class="">
-            <img src="imagens/perfil-face.jpg" alt="foto do perfil" title="Manoel Dijalma ${usuario.nome}" class="img-perfil__home">
+            <img src="imagens/perfil-face.jpg" alt="foto do perfil" title="${usuario.nome}" class="img-perfil__home">
         </div>
     </div>
 </header>

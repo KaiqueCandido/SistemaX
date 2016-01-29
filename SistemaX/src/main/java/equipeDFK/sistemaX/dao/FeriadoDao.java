@@ -43,14 +43,14 @@ public class FeriadoDao implements FeriadoDaoIF {
     public boolean cadastrar(Feriado feriado) throws SQLException {
         try {
 
-            Date data = feriado.getDataFeriado();
-            java.sql.Date dataConvertida = new java.sql.Date(data.getTime());
+            //Date data = feriado.getDataFeriado();
+            //java.sql.Date dataConvertida = new java.sql.Date(data.getTime());
 
             String SQl = "insert into Feriado(nomeFeriado, dataFeriado) values (?,?)";
 
             pstm = con.prepareStatement(SQl);
             pstm.setString(1, feriado.getNomeFeriado());
-            pstm.setDate(2, dataConvertida);
+            pstm.setString(2, feriado.getDataFeriado());
 
             pstm.executeUpdate();
 
@@ -70,13 +70,13 @@ public class FeriadoDao implements FeriadoDaoIF {
 
         try {
 
-            Date data = feriado.getDataFeriado();
-            java.sql.Date dataConvertida = new java.sql.Date(data.getTime());
+            //Date data = feriado.getDataFeriado();
+            //java.sql.Date dataConvertida = new java.sql.Date(data.getTime());
 
             String SQL = "delete from Feriado where dataFeriado=?";
 
             pstm = con.prepareStatement(SQL);
-            pstm.setDate(1, dataConvertida);
+            pstm.setString(1, feriado.getDataFeriado());
 
             pstm.executeUpdate();
 
@@ -95,13 +95,13 @@ public class FeriadoDao implements FeriadoDaoIF {
     public void atualizar(Feriado feriado) throws SQLException {
         try {
 
-            Date data = feriado.getDataFeriado();
-            java.sql.Date dataConvertida = new java.sql.Date(data.getTime());
+            //Date data = feriado.getDataFeriado();
+            //java.sql.Date dataConvertida = new java.sql.Date(data.getTime());
 
             String SQL = "update Feriado set nomeFeriado=?, dataFeriado=? where id=? ";
             pstm = con.prepareStatement(SQL);
             pstm.setString(1, feriado.getNomeFeriado());
-            pstm.setDate(2, dataConvertida);
+            pstm.setString(2, feriado.getDataFeriado());
 
             pstm.executeUpdate();
 
@@ -122,10 +122,9 @@ public class FeriadoDao implements FeriadoDaoIF {
 
             Feriado feriado1 = new Feriado();
 
-            while (result.next()) {
-                feriado1.setIdFeriado(result.getInt("idFeriado"));
+            while (result.next()) {                
                 feriado1.setNomeFeriado(result.getString("nomeFeriado"));
-                feriado1.setDataFeriado(result.getDate("dataFeriado"));
+                feriado1.setDataFeriado(result.getString("dataFeriado"));
 
                 return feriado1;
             }

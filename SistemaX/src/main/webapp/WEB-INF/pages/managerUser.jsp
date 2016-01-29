@@ -11,6 +11,9 @@
     <%@include file="head.jsp" %>
     <body>
         <%@include file="header.jsp" %>
+        <div class="breadcrumb ">
+            <a href="home">Home  ></a><a href="managerUser">Gerenciar Usuário</a>
+        </div>
         <%@include file="novoUsuario.jsp" %>
         <div class="conteudo">
             <div class="crud-user">
@@ -40,7 +43,7 @@
                 </div>
             </div><br>
             <div class="dj-tabela__overflow">
-                <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp dj-tabela__big">
+                <table id="tabela" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp dj-tabela__big">
                     <thead>
                         <tr>
                             <th></th>
@@ -56,9 +59,10 @@
                                 <td class="dj-size__small"><input type="checkbox" onclick="liberarButton(${usuario.id})" checked=""></td>
                                 <td>${usuario.nome}</td>
                                 <td>${usuario.email}</td>
-                                <td>${usuario.papel}</td>
+                                <td>${usuario.tipo}</td>
                                 <td>${usuario.status}</td>
                             </tr>
+<<<<<<< HEAD
                         </c:forEach>
                             <tr>
                                 <td class="dj-size__small"><input type="checkbox" onclick="liberarButton()"</td>
@@ -96,6 +100,9 @@
                                 <td>Ativo</td>
                             </tr>
                             
+=======
+                        </c:forEach>                            
+>>>>>>> b0d260e279dac4d403f5b32cdf6a85b090a04bf7
                     </tbody>
                 </table>
             </div>

@@ -15,6 +15,7 @@
             <button class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect btn-upload">Enviar foto</button>
             <br><br><br>
             <form action="addUsuario" method="post">
+                <h6>${erro}</h6>
                 <input type="file" class="dj-invisible inp-upload" name="foto" onchange="updateLogo(this)"/>
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                     <input type="text" class="mdl-textfield__input" name="nome" id="sample1" required="" autofocus="">
@@ -37,7 +38,7 @@
                     <label class="mdl-textfield__label" for="tipo">Tipo de usuário</label>
                 </div><br><br>
                 <div class="botoes-fechar dj-text__right">
-                    <button type="submit" class="mdl-button mdl-button mdl-button--colored mdl-button--raised">Cadastrar</button>
+                    <button type="submit" class="mdl-button mdl-button mdl-button--colored mdl-button--raised" onclick="adicionarUsuario()">Cadastrar</button>
                 </div>
                 <datalist id="tipos">
                     <option value="Administrador"></option>
