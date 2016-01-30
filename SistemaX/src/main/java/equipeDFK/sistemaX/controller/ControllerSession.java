@@ -36,7 +36,7 @@ public class ControllerSession {
             req.setAttribute("erro", "Usuário ou senha inválidos");
             return "index";
         }
-        req.getSession().setAttribute("usuario", u);
+        req.getSession().setAttribute("usuarioLogado", u);
         return "home";
     }
     

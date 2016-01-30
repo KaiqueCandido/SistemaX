@@ -6,7 +6,7 @@
 
 <header class="mdl-layout__header">
     <div class="menuSistema">
-        <img id="logoHome" src="imagens/logo.jpg" alt="foto da logo" title="Sistema X">
+        <img id="logoHome" src="Icons/symbol174.png" alt="foto da logo" title="Sistema X">
         <div class="dj-float__right">
             <h4 class="mdl-layout__title">Sistema X</h4>
             <h6>Logado como ${usuarioLogado.tipo}</h6>

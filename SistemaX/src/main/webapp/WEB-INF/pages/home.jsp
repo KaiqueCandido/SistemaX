@@ -22,13 +22,13 @@
                 <ul>
                     <li>
                         <div class="funcionalidades">
-                            <img src="imagens/logo.jpg" alt="funcionalidade" title="Gerenciar Usuário" class="img-funcionalidade">
+                            <img src="Icons/manager3.png" alt="funcionalidade" title="Gerenciar Usuário" class="img-funcionalidade">
                             <h6><a href="managerUser">Gerenciar Usuário</a></h6>
                         </div>
                     </li>
                     <li>
                         <div class="funcionalidades">
-                            <img src="imagens/logo.jpg" alt="funcionalidade" title="Gerenciar Feriados" class="img-funcionalidade">
+                            <img src="Icons/rest5.png" alt="funcionalidade" title="Gerenciar Feriados" class="img-funcionalidade">
                             <h6><a href="managerHoliday">Gerenciar Feriados</a></h6>
                         </div>
                     </li>
