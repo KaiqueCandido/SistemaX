@@ -37,6 +37,10 @@ function adicionarUsuario() {
     $('#novoUser').removeClass('dj-invisible');
 }
 
+function editarUsuario() {
+    $('#editarUser').removeClass('dj-invisible');
+}
+
 $(function () {
     $("#searchUser").keyup(function () {
         var index = $(this).parent().index();

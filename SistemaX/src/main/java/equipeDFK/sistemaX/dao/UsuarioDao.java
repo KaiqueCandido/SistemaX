@@ -65,15 +65,16 @@ public class UsuarioDao implements UsuarioDaoIF {
     public void atualizar(Usuario u) throws SQLException {
         try {
 
-            String SQL = "update usuario set email=?, nomedeusuario=? senha=?, foto=?, matricula=? where id=?";
+            String SQL = "update usuario set email=?, nomedeusuario=?, senha=?, foto=?, matricula=?, tipo=? where id=?";
 
             pstm = con.prepareStatement(SQL);
             pstm.setString(1, u.getEmail());
             pstm.setString(2, u.getNome());
             pstm.setString(3, u.getSenha());
             pstm.setString(4, u.getFoto());
-            pstm.setString(5, u.getTipo());
-            pstm.setString(6, u.getMatricula());
+            pstm.setString(5, u.getMatricula());
+            pstm.setString(6, u.getTipo());            
+            pstm.setInt(7, u.getId());
 
             pstm.executeUpdate();
         } finally {

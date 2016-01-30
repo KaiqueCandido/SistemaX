@@ -15,6 +15,7 @@
             <a href="home">Home  ></a><a href="managerUser">Gerenciar Usuário</a>
         </div>
         <%@include file="novoUsuario.jsp" %>
+        <%@include file="editarUsuario.jsp" %>
         <div class="conteudo">
             <div class="crud-user">
                 <div class="dj-float__left">

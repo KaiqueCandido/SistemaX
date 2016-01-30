@@ -21,10 +21,20 @@ public class GerenciadorDeUsuario {
         usuDao.remover(u);
     }
 
-    public void atualizar(Usuario u) throws SQLException {
+    public void atualizar(Usuario u, Usuario atualizado) throws SQLException {
         DaoFactoryIF fabrica = DaoFactory.creatFactory();
         UsuarioDaoIF usuDao = fabrica.criaUsuarioDao();
-        usuDao.atualizar(u);
+        
+        atualizado.setEmail(u.getEmail());
+        atualizado.setFoto(u.getFoto());
+        atualizado.setId(u.getId());
+        atualizado.setMatricula(u.getMatricula());
+        atualizado.setNome(u.getNome());
+        atualizado.setSenha(u.getSenha());
+        atualizado.setStatus(u.getStatus());
+        atualizado.setTipo(u.getTipo());        
+        
+        usuDao.atualizar(atualizado);
     }
 
     public Usuario pesquisarPorNomeDeUsuario(String nome) throws SQLException {

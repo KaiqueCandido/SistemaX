@@ -23,33 +23,26 @@ public class ControllerUser {
     @RequestMapping("addUsuario")
     public String addUsuario(HttpServletRequest req, Usuario u) throws SQLException {
         GerenciadorDeUsuario gu = new GerenciadorDeUsuario();
-        ValidaUsuario vu = new ValidaUsuario();
-
-        if (!vu.validaNomeDeUsuario(u)) {
-            req.setAttribute("erro", "Nome de usúario inválido");
-            return "managerUser";
-        }
-
-        if (!vu.validaSenha(u)) {
-            req.setAttribute("erro", "Senha inválido");
-            return "managerUser";
-        }
-
-        if (!vu.validaMatricula(u)) {
-            req.setAttribute("erro", "Matricula inválido");
-            return "managerUser";
-        }
-
         gu.cadastrar(u);
         req.getSession().setAttribute("usuarios", gu.listar());
         return "managerUser";
     }
 
     @RequestMapping("atualizarUsuario")
-    public String editUsuario(HttpServletRequest req, Usuario u) throws SQLException {
+    public String editUsuario(HttpServletRequest req, Usuario atualizado) throws SQLException {
         GerenciadorDeUsuario gu = new GerenciadorDeUsuario();
-        gu.atualizar(u);
-        req.getSession().setAttribute("usuario", gu.listar());
+        // tem que ajeitar
+        gu.atualizar(atualizado, atualizado);
+        req.getSession().setAttribute("usuarios", gu.listar());
+        return "managerUser";
+    }
+
+    @RequestMapping("atualizarUsuarioAtual")
+    public String editCurrentUsuario(HttpServletRequest req, Usuario atualizado) throws SQLException {
+        GerenciadorDeUsuario gu = new GerenciadorDeUsuario();
+        Usuario usuarioAtual = (Usuario) req.getSession().getAttribute("usuario");
+        gu.atualizar(usuarioAtual, atualizado);
+        req.getSession().setAttribute("usuario", gu.pesquisarPorNomeDeUsuario(atualizado.getEmail()));
         return "managerUser";
     }
 
@@ -57,7 +50,7 @@ public class ControllerUser {
     public String removerUsuario(HttpServletRequest req, Usuario u) throws SQLException {
         GerenciadorDeUsuario gu = new GerenciadorDeUsuario();
         gu.remover(u);
-        req.getSession().setAttribute("usuario", gu.listar());
+        req.getSession().setAttribute("usuarios", gu.listar());
         return "managerUser";
     }
 }

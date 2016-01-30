@@ -6,6 +6,8 @@ package equipeDFK.sistemaX.teste;
  * and open the template in the editor.
  */
 import equipeDFK.sistemaX.entidades.Feriado;
+import equipeDFK.sistemaX.entidades.Usuario;
+import equipeDFK.sistemaX.gerenciadores.GerenciadorDeUsuario;
 import equipeDFK.sistemaX.openCSV.OpenCSV;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -20,12 +22,13 @@ import java.util.List;
 public class ClasseTeste {
 
     public static void main(String[] args) throws SQLException, FileNotFoundException {
-        //GerenciadorDeUsuario gu = new GerenciadorDeUsuario();
-        //gu.cadastrar(new Usuario("email", "kaique Candido", "senha", "foto", "tipo", "matri"));        
+        GerenciadorDeUsuario gu = new GerenciadorDeUsuario();
+        Usuario u = gu.pesquisarPorNomeDeUsuario("KaiqueCandido");
+        u.setNome("KaiqueCandidooliveira");
+        System.out.println(u);
+          
 
-        File filename = new File("D://teste.csv");
-        OpenCSV open = new OpenCSV();
-        open.lerCSV(filename);
+        
 
     }
 

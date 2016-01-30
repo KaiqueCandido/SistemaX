@@ -16,6 +16,7 @@
         <%@include file="novoUsuario.jsp" %>
         <hr>
         <div class="conteudo">
+            <%@include file="editarUsuario.jsp" %>
             <h4>Funcionalidades</h4>
             <div class="conjunto">
                 <ul>
