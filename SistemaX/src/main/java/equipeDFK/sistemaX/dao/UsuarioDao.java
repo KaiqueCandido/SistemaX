@@ -168,6 +168,34 @@ public class UsuarioDao implements UsuarioDaoIF {
             co.liberar();
         }
     }
+    
+    public Usuario pesquisarPorId(int id) throws SQLException {
+        try {
+            String SQL = "select * from usuario where id = '" + id + "'";
+
+            pstm = con.prepareStatement(SQL);
+            ResultSet result = pstm.executeQuery();
+
+            Usuario usuario = new Usuario();
+
+            while (result.next()) {
+                usuario.setId(result.getInt("id"));
+                usuario.setEmail(result.getString("email"));
+                usuario.setNome(result.getString("nomedeusuario"));
+                usuario.setSenha(result.getString("senha"));
+                usuario.setFoto(result.getString("foto"));
+                usuario.setTipo(result.getString("tipo"));
+                usuario.setMatricula(result.getString("matricula"));
+                usuario.setStatus(result.getString("status"));
+
+                return usuario;
+            }
+
+            return null;
+        } finally {
+            co.liberar();
+        }
+    }
 
     @Override
     public Usuario logar(String login, String senha) throws SQLException {

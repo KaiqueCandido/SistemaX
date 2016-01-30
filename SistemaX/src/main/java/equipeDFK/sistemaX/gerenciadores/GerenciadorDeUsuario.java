@@ -9,7 +9,7 @@ import java.util.List;
 
 public class GerenciadorDeUsuario {
 
-    public boolean cadastrar(Usuario u) throws SQLException {       
+    public boolean cadastrar(Usuario u) throws SQLException {
         DaoFactoryIF fabrica = DaoFactory.creatFactory();
         UsuarioDaoIF usuDao = fabrica.criaUsuarioDao();
         return usuDao.cadastrar(u);
@@ -21,20 +21,10 @@ public class GerenciadorDeUsuario {
         usuDao.remover(u);
     }
 
-    public void atualizar(Usuario u, Usuario atualizado) throws SQLException {
+    public void atualizar(Usuario u) throws SQLException {
         DaoFactoryIF fabrica = DaoFactory.creatFactory();
         UsuarioDaoIF usuDao = fabrica.criaUsuarioDao();
-        
-        atualizado.setEmail(u.getEmail());
-        atualizado.setFoto(u.getFoto());
-        atualizado.setId(u.getId());
-        atualizado.setMatricula(u.getMatricula());
-        atualizado.setNome(u.getNome());
-        atualizado.setSenha(u.getSenha());
-        atualizado.setStatus(u.getStatus());
-        atualizado.setTipo(u.getTipo());        
-        
-        usuDao.atualizar(atualizado);
+        usuDao.atualizar(u);
     }
 
     public Usuario pesquisarPorNomeDeUsuario(String nome) throws SQLException {
@@ -55,12 +45,19 @@ public class GerenciadorDeUsuario {
         return usuDao.pesquisarPorMatricula(matricula);
     }
 
+    public Usuario pesquisarPorId(int id) throws SQLException {
+        DaoFactoryIF fabrica = DaoFactory.creatFactory();
+        UsuarioDaoIF usuDao = fabrica.criaUsuarioDao();
+        return usuDao.pesquisarPorId(id);
+    }
+
     /**
      * Função para verificar e auntenticar usuário no sistema
+     *
      * @param login
      * @param senha
      * @return {@linkplain Usuario}
-     * @throws SQLException 
+     * @throws SQLException
      */
     public Usuario logar(String login, String senha) throws SQLException {
         DaoFactoryIF fabrica = DaoFactory.creatFactory();

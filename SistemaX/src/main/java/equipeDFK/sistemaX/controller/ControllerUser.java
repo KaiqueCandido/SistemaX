@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 public class ControllerUser {
-
+    
     @RequestMapping("addUsuario")
     public String addUsuario(HttpServletRequest req, Usuario u) throws SQLException {
         GerenciadorDeUsuario gu = new GerenciadorDeUsuario();
@@ -27,30 +27,30 @@ public class ControllerUser {
         req.getSession().setAttribute("usuarios", gu.listar());
         return "managerUser";
     }
-
+    
     @RequestMapping("atualizarUsuario")
-    public String editUsuario(HttpServletRequest req, Usuario atualizado) throws SQLException {
+    public String editUsuario(HttpServletRequest req, Usuario u) throws SQLException {
         GerenciadorDeUsuario gu = new GerenciadorDeUsuario();
-        // tem que ajeitar
-        gu.atualizar(atualizado, atualizado);
+        gu.atualizar(u);
         req.getSession().setAttribute("usuarios", gu.listar());
         return "managerUser";
     }
-
-    @RequestMapping("atualizarUsuarioAtual")
-    public String editCurrentUsuario(HttpServletRequest req, Usuario atualizado) throws SQLException {
-        GerenciadorDeUsuario gu = new GerenciadorDeUsuario();
-        Usuario usuarioAtual = (Usuario) req.getSession().getAttribute("usuario");
-        gu.atualizar(usuarioAtual, atualizado);
-        req.getSession().setAttribute("usuario", gu.pesquisarPorNomeDeUsuario(atualizado.getEmail()));
-        return "managerUser";
-    }
-
+    
     @RequestMapping("removerUsuario")
     public String removerUsuario(HttpServletRequest req, Usuario u) throws SQLException {
         GerenciadorDeUsuario gu = new GerenciadorDeUsuario();
         gu.remover(u);
         req.getSession().setAttribute("usuarios", gu.listar());
         return "managerUser";
+    }
+    
+    @RequestMapping("atualizarUsuarioAtual")
+    public String editCurrentUsuario(HttpServletRequest req, Usuario u) throws SQLException {
+        GerenciadorDeUsuario gu = new GerenciadorDeUsuario();
+        Usuario usuario = (Usuario) req.getSession().getAttribute("usuario");
+        u.setId(usuario.getId());
+        gu.atualizar(u);
+        req.getSession().setAttribute("usuario", gu.pesquisarPorId(usuario.getId()));
+        return "home";
     }
 }

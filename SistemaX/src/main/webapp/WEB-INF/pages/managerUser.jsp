@@ -63,47 +63,7 @@
                                 <td>${usuario.tipo}</td>
                                 <td>${usuario.status}</td>
                             </tr>
-<<<<<<< HEAD
                         </c:forEach>
-                            <tr>
-                                <td class="dj-size__small"><input type="checkbox" onclick="liberarButton()"</td>
-                                <td>Alann</td>
-                                <td>email@servidor.com</td>
-                                <td>ALUNO</td>
-                                <td>Ativo</td>
-                            </tr>
-                            <tr>
-                                <td class="dj-size__small"><input type="checkbox" onclick="liberarButton()"</td>
-                                <td>Alann</td>
-                                <td>email@servidor.com</td>
-                                <td>ALUNO</td>
-                                <td>Ativo</td>
-                            </tr>
-                            <tr>
-                                <td class="dj-size__small"><input type="checkbox" onclick="liberarButton()"</td>
-                                <td>Alann</td>
-                                <td>email@servidor.com</td>
-                                <td>ALUNO</td>
-                                <td>Ativo</td>
-                            </tr>
-                            <tr>
-                                <td class="dj-size__small"><input type="checkbox" onclick="liberarButton()"</td>
-                                <td>Alann</td>
-                                <td>email@servidor.com</td>
-                                <td>ALUNO</td>
-                                <td>Ativo</td>
-                            </tr>
-                            <tr>
-                                <td class="dj-size__small"><input type="checkbox" onclick="liberarButton()"</td>
-                                <td>Alann</td>
-                                <td>email@servidor.com</td>
-                                <td>ALUNO</td>
-                                <td>Ativo</td>
-                            </tr>
-                            
-=======
-                        </c:forEach>                            
->>>>>>> b0d260e279dac4d403f5b32cdf6a85b090a04bf7
                     </tbody>
                 </table>
             </div>
