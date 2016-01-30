@@ -59,7 +59,7 @@ function adicionarUsuarioAjax() {
         usuario.append('foto', foto);
 
         $.ajax({
-            url: "/addUsuarioAjax",
+            url: "addUsuarioAjax",
             type: "POST",
             data: usuario,
             processData: false,

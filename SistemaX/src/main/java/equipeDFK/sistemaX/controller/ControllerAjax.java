@@ -8,6 +8,8 @@ package equipeDFK.sistemaX.controller;
 import equipeDFK.sistemaX.entidades.Usuario;
 import equipeDFK.sistemaX.gerenciadores.GerenciadorDeUsuario;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,11 +22,16 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class ControllerAjax {
     
-    @RequestMapping("/addUsuarioAjax")
-    public @ResponseBody String addUser(HttpServletRequest req, String foto, String nome, String senha, String email, String matricula, String tipo) throws SQLException{
+    @RequestMapping("addUsuarioAjax")
+    public @ResponseBody String addUser(HttpServletRequest req, Usuario u) {
         GerenciadorDeUsuario gu = new GerenciadorDeUsuario();
-        Usuario u = new Usuario(email, nome, senha, foto, tipo, matricula, "ativo");
-        boolean r = gu.cadastrar(u);
+        boolean r = false;
+        
+        try {
+            r = gu.cadastrar(u);
+        } catch (SQLException ex) {
+            Logger.getLogger(ControllerAjax.class.getName()).log(Level.SEVERE, null, ex);
+        }
  
         String  result;
         
