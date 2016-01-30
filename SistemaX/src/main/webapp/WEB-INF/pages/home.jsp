@@ -11,7 +11,7 @@
     <body>
         <%@include file="header.jsp" %>
         <div class="breadcrumb ">
-            <a href="home">Home</a>
+            <label>Home</label>
         </div>
         <%@include file="novoUsuario.jsp" %>
         <hr>

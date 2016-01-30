@@ -14,20 +14,20 @@ and open the template in the editor.
 }
 
 #logoInicio {
-    width: 300px;
-    height: 200px;
+    width: 180px;
+    height: 180px;
     border-radius: 5px;
 }
 
 #logoHome {
-    width: 160px;
-    height: 120px;
+    width: 130px;
+    height: 130px;
     border-radius: 5px
 }
 
 .menuSistema {
     padding: 10px;
-    width: 32%;
+    width: 29%;
     height: 130px;
 }
 
@@ -127,11 +127,15 @@ ul li {
 .breadcrumb{
     margin-top: 20px;
     height: 20px;
+    margin-left: 20px;
+}
+
+.breadcrumb label{
+    font-size: 20px;
 }
 
 .breadcrumb a{
     font-size: 20px;
-    margin-left: 40px;
 }
 
 a {
@@ -140,4 +144,10 @@ a {
 
 a:hover{
     text-decoration: underline;
+}
+
+.swicth-center{
+    margin: 0 auto 10px 39%;
+    width: 50px;
+    text-align: center !important;
 }

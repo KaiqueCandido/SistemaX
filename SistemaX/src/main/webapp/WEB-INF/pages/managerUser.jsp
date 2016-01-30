@@ -11,8 +11,10 @@
     <%@include file="head.jsp" %>
     <body>
         <%@include file="header.jsp" %>
-        <div class="breadcrumb ">
-            <a href="home">Home  ></a><a href="managerUser">Gerenciar Usuário</a>
+        <div class="breadcrumb">
+            <a href="home">Home</a>
+            <label> ></label>
+            <label>Gerenciar Usuário</label>
         </div>
         <%@include file="novoUsuario.jsp" %>
         <%@include file="editarUsuario.jsp" %>

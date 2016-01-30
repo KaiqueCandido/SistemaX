@@ -18,23 +18,23 @@
                 <h6>${erro}</h6>
                 <input type="file" class="dj-invisible inp-upload" name="foto" onchange="updateLogo(this)"/>
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <input type="text" class="mdl-textfield__input" name="nome" id="sample1" required="" autofocus="" value=${usuario.nome}>
+                    <input type="text" class="mdl-textfield__input" name="nome" id="sample1" required="" autofocus="" value=${usuarioLogado.nome}>
                     <label class="mdl-textfield__label" for="sample1">Nome de usuário</label>
                 </div><br>
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <input type="password" class="mdl-textfield__input" name="senha" id="sample2" required="" value=${usuario.senha}>
+                    <input type="password" class="mdl-textfield__input" name="senha" id="sample2" required="" value=${usuarioLogado.senha}>
                     <label class="mdl-textfield__label" for="sample2">Senha</label>
                 </div><br>
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <input type="text" class="mdl-textfield__input" name="email" id="sample3" required="" value=${usuario.email}>
+                    <input type="text" class="mdl-textfield__input" name="email" id="sample3" required="" value=${usuarioLogado.email}>
                     <label class="mdl-textfield__label" for="sample3">Email</label>
                 </div><br>
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <input type="text" class="mdl-textfield__input" name="matricula" id="sample4" required="" value=${usuario.matricula}>
+                    <input type="text" class="mdl-textfield__input" name="matricula" id="sample4" required="" value=${usuarioLogado.matricula}>
                     <label class="mdl-textfield__label" for="sample4">Matrícula</label>
                 </div><br>
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <input type="text" class="mdl-textfield__input" name="tipo" id="sample5" required="" value=${usuario.tipo}>
+                    <input type="text" class="mdl-textfield__input" name="tipo" id="sample5" required="" value=${usuarioLogado.tipo}>
                     <label class="mdl-textfield__label" for="tipo">Tipo de usuário</label>
                 </div><br><br>
                 <div class="botoes-fechar dj-text__right">

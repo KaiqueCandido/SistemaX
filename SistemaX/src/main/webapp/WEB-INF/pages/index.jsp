@@ -10,27 +10,31 @@
 <html>
     <%@include file="head.jsp" %>
     <body class="dj-text__center">
-        <br>
+        <h2>Sistema</h2>
         <div>
-            <img src="imagens/logo.jpg" alt="logo" title="Sistema X" id="logoInicio">
+            <img src="Icons/symbol174.png" alt="logo" title="Sistema X" id="logoInicio">
         </div>
-        <h1>Sistema X</h1>
         <form action="logar" method="post">
             <h6>${erro}</h6>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                 <input class="mdl-textfield__input" type="text" id="sample1" required="" name="usuarioOuEmail">
                 <label class="mdl-textfield__label" for="sample1">Nome de usuário ou email</label>
-            </div><br><br>
+            </div><br>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                 <input class="mdl-textfield__input" type="password" id="sample2" required="" name="senha">
                 <label class="mdl-textfield__label" for="sample2">Senha</label>
             </div><br><br>
             <div>
-                <a href="requisitarSenha" class="margin">Esqueci minha senha</a>
-                <input type="checkbox" id="lembrar" class="">
-                <label for="lembrar">Lembrar</label><br>
-                <input class="mdl-button mdl-js-button mdl-button--accent mdl-button--raised mdl-js-ripple-effect margin" type="submit" value="Login">
-            </div>
+                <div class="swicth-center">
+                    <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect swicth" for="lembrar">
+                        <input type="checkbox" id="lembrar" class="mdl-switch__input">
+                        <span class="mdl-switch__label">Lembrar</span>
+                    </label>
+                </div>
+                <div>
+                    <a href="requisitarSenha" class="margin">Esqueci minha senha</a>
+                    <input class="mdl-button mdl-js-button mdl-button--accent mdl-button--raised mdl-js-ripple-effect margin" type="submit" value="Login">
+                </div>
         </form>
     </body>
 </html>
