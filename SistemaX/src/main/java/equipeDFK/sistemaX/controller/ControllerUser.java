@@ -7,7 +7,6 @@ package equipeDFK.sistemaX.controller;
 
 import equipeDFK.sistemaX.entidades.Usuario;
 import equipeDFK.sistemaX.gerenciadores.GerenciadorDeUsuario;
-import equipeDFK.sistemaX.validacao.ValidaUsuario;
 import java.sql.SQLException;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
@@ -44,11 +43,11 @@ public class ControllerUser {
         return "managerUser";
     }
     
-<<<<<<< HEAD
+
     @RequestMapping("addUsuarioAjax")
     public void addUserAjax(Usuario u, HttpServletRequest req){
         
-=======
+    }
     @RequestMapping("atualizarUsuarioAtual")
     public String editCurrentUsuario(HttpServletRequest req, Usuario u) throws SQLException {
         GerenciadorDeUsuario gu = new GerenciadorDeUsuario();
@@ -57,6 +56,5 @@ public class ControllerUser {
         gu.atualizar(u);
         req.getSession().setAttribute("usuario", gu.pesquisarPorId(usuario.getId()));
         return "home";
->>>>>>> 6c480b4eb073c43a959f0ef855fe3c839c37c564
     }
 }
