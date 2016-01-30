@@ -56,53 +56,13 @@
                     <tbody>
                         <c:forEach items="${usuarios}" var="usuario">
                             <tr>
-                                <td class="dj-size__small"><input type="checkbox" onclick="liberarButton(${usuario.id})" checked=""></td>
+                                <td class="dj-size__small"><input type="checkbox" onclick="liberarButton(${usuario.id})" ></td>
                                 <td>${usuario.nome}</td>
                                 <td>${usuario.email}</td>
                                 <td>${usuario.tipo}</td>
                                 <td>${usuario.status}</td>
                             </tr>
-<<<<<<< HEAD
-                        </c:forEach>
-                            <tr>
-                                <td class="dj-size__small"><input type="checkbox" onclick="liberarButton()"</td>
-                                <td>Alann</td>
-                                <td>email@servidor.com</td>
-                                <td>ALUNO</td>
-                                <td>Ativo</td>
-                            </tr>
-                            <tr>
-                                <td class="dj-size__small"><input type="checkbox" onclick="liberarButton()"</td>
-                                <td>Alann</td>
-                                <td>email@servidor.com</td>
-                                <td>ALUNO</td>
-                                <td>Ativo</td>
-                            </tr>
-                            <tr>
-                                <td class="dj-size__small"><input type="checkbox" onclick="liberarButton()"</td>
-                                <td>Alann</td>
-                                <td>email@servidor.com</td>
-                                <td>ALUNO</td>
-                                <td>Ativo</td>
-                            </tr>
-                            <tr>
-                                <td class="dj-size__small"><input type="checkbox" onclick="liberarButton()"</td>
-                                <td>Alann</td>
-                                <td>email@servidor.com</td>
-                                <td>ALUNO</td>
-                                <td>Ativo</td>
-                            </tr>
-                            <tr>
-                                <td class="dj-size__small"><input type="checkbox" onclick="liberarButton()"</td>
-                                <td>Alann</td>
-                                <td>email@servidor.com</td>
-                                <td>ALUNO</td>
-                                <td>Ativo</td>
-                            </tr>
-                            
-=======
-                        </c:forEach>                            
->>>>>>> b0d260e279dac4d403f5b32cdf6a85b090a04bf7
+                        </c:forEach>                     
                     </tbody>
                 </table>
             </div>

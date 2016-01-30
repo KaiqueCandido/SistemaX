@@ -34,6 +34,17 @@ function escondeMenu() {
 }
 
 function adicionarUsuario() {
+    
+    var nome = $("#nome").val();
+    var senha = $("#senha").val();
+    var email = $("#email").val();
+    var matricula = $("#matricula").val();
+    var tipo = $("#tipo").val();
+
+    $.ajax({url: "addUsuario", success: function(result){
+        $(".result").html(result);
+    }});
+    
     $('#novoUser').removeClass('dj-invisible');
 }
 

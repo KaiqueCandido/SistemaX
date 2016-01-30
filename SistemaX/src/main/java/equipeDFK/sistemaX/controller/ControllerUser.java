@@ -60,4 +60,9 @@ public class ControllerUser {
         req.getSession().setAttribute("usuario", gu.listar());
         return "managerUser";
     }
+    
+    @RequestMapping("addUsuarioAjax")
+    public void addUserAjax(Usuario u, HttpServletRequest req){
+        
+    }
 }
