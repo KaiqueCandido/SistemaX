@@ -65,15 +65,16 @@ public class UsuarioDao implements UsuarioDaoIF {
     public void atualizar(Usuario u) throws SQLException {
         try {
 
-            String SQL = "update usuario set email=?, nomedeusuario=? senha=?, foto=?, matricula=? where id=?";
+            String SQL = "update usuario set email=?, nomedeusuario=?, senha=?, foto=?, matricula=?, tipo=? where id=?";
 
             pstm = con.prepareStatement(SQL);
             pstm.setString(1, u.getEmail());
             pstm.setString(2, u.getNome());
             pstm.setString(3, u.getSenha());
             pstm.setString(4, u.getFoto());
-            pstm.setString(5, u.getTipo());
-            pstm.setString(6, u.getMatricula());
+            pstm.setString(5, u.getMatricula());
+            pstm.setString(6, u.getTipo());            
+            pstm.setInt(7, u.getId());
 
             pstm.executeUpdate();
         } finally {
@@ -143,6 +144,34 @@ public class UsuarioDao implements UsuarioDaoIF {
     public Usuario pesquisarPorMatricula(String matricula) throws SQLException {
         try {
             String SQL = "select * from usuario where matricula ilike '%" + matricula + "%'";
+
+            pstm = con.prepareStatement(SQL);
+            ResultSet result = pstm.executeQuery();
+
+            Usuario usuario = new Usuario();
+
+            while (result.next()) {
+                usuario.setId(result.getInt("id"));
+                usuario.setEmail(result.getString("email"));
+                usuario.setNome(result.getString("nomedeusuario"));
+                usuario.setSenha(result.getString("senha"));
+                usuario.setFoto(result.getString("foto"));
+                usuario.setTipo(result.getString("tipo"));
+                usuario.setMatricula(result.getString("matricula"));
+                usuario.setStatus(result.getString("status"));
+
+                return usuario;
+            }
+
+            return null;
+        } finally {
+            co.liberar();
+        }
+    }
+    
+    public Usuario pesquisarPorId(int id) throws SQLException {
+        try {
+            String SQL = "select * from usuario where id = '" + id + "'";
 
             pstm = con.prepareStatement(SQL);
             ResultSet result = pstm.executeQuery();

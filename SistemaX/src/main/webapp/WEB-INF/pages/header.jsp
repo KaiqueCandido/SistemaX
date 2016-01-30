@@ -14,9 +14,15 @@
     </div>
     <div class="menuUsuario dj-text__right">
         <div class="dj-float__left">
+<<<<<<< HEAD
             <h4>${usuarioLogado.nome}</h4>
             <a href="#">Editar Perfil</a><label> |</label>
             <a href="#">Sair</a>
+=======
+            <h4>${usuario.nome}</h4>
+            <a href="#" onclick="editarUsuario()">Editar Perfil</a><label> |</label>
+            <a href="deslogar">Sair</a>
+>>>>>>> 6c480b4eb073c43a959f0ef855fe3c839c37c564
         </div>
         <div class="">
             <img src="imagens/perfil-face.jpg" alt="foto do perfil" title="${usuarioLogado.nome}" class="img-perfil__home">

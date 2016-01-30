@@ -9,7 +9,7 @@ import java.util.List;
 
 public class GerenciadorDeUsuario {
 
-    public boolean cadastrar(Usuario u) throws SQLException {       
+    public boolean cadastrar(Usuario u) throws SQLException {
         DaoFactoryIF fabrica = DaoFactory.creatFactory();
         UsuarioDaoIF usuDao = fabrica.criaUsuarioDao();
         return usuDao.cadastrar(u);
@@ -45,12 +45,19 @@ public class GerenciadorDeUsuario {
         return usuDao.pesquisarPorMatricula(matricula);
     }
 
+    public Usuario pesquisarPorId(int id) throws SQLException {
+        DaoFactoryIF fabrica = DaoFactory.creatFactory();
+        UsuarioDaoIF usuDao = fabrica.criaUsuarioDao();
+        return usuDao.pesquisarPorId(id);
+    }
+
     /**
      * Função para verificar e auntenticar usuário no sistema
+     *
      * @param login
      * @param senha
      * @return {@linkplain Usuario}
-     * @throws SQLException 
+     * @throws SQLException
      */
     public Usuario logar(String login, String senha) throws SQLException {
         DaoFactoryIF fabrica = DaoFactory.creatFactory();

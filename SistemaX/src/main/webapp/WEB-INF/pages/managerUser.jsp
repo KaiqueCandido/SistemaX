@@ -15,6 +15,7 @@
             <a href="home">Home  ></a><a href="managerUser">Gerenciar Usuário</a>
         </div>
         <%@include file="novoUsuario.jsp" %>
+        <%@include file="editarUsuario.jsp" %>
         <div class="conteudo">
             <div class="crud-user">
                 <div class="dj-float__left">
@@ -62,7 +63,11 @@
                                 <td>${usuario.tipo}</td>
                                 <td>${usuario.status}</td>
                             </tr>
+<<<<<<< HEAD
                         </c:forEach>                     
+=======
+                        </c:forEach>
+>>>>>>> 6c480b4eb073c43a959f0ef855fe3c839c37c564
                     </tbody>
                 </table>
             </div>

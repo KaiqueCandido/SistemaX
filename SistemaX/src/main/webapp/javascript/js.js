@@ -48,10 +48,14 @@ function adicionarUsuario() {
     $('#novoUser').removeClass('dj-invisible');
 }
 
+function editarUsuario() {
+    $('#editarUser').removeClass('dj-invisible');
+}
+
 $(function () {
     $("#searchUser").keyup(function () {
         var index = $(this).parent().index();
-        var nth = "#tabela td:nth-child(" + (index - 1).toString() + ")";
+        var nth = "#tabela td:nth-child(" + (index).toString() + ")";
         var valor = $(this).val().toUpperCase();
         $("#tabela tbody tr").show();
         $(nth).each(function () {

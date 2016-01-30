@@ -17,6 +17,8 @@ public interface UsuarioDaoIF {
     public Usuario pesquisarPorEmail(String email) throws SQLException;
 
     public Usuario pesquisarPorMatricula(String matricula) throws SQLException;
+    
+    public Usuario pesquisarPorId(int id) throws SQLException;
 
     public Usuario logar(String login, String senha) throws SQLException;
 

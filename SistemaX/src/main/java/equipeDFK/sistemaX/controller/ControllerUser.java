@@ -19,50 +19,44 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 public class ControllerUser {
-
+    
     @RequestMapping("addUsuario")
     public String addUsuario(HttpServletRequest req, Usuario u) throws SQLException {
         GerenciadorDeUsuario gu = new GerenciadorDeUsuario();
-        ValidaUsuario vu = new ValidaUsuario();
-
-        if (!vu.validaNomeDeUsuario(u)) {
-            req.setAttribute("erro", "Nome de usúario inválido");
-            return "managerUser";
-        }
-
-        if (!vu.validaSenha(u)) {
-            req.setAttribute("erro", "Senha inválido");
-            return "managerUser";
-        }
-
-        if (!vu.validaMatricula(u)) {
-            req.setAttribute("erro", "Matricula inválido");
-            return "managerUser";
-        }
-
         gu.cadastrar(u);
         req.getSession().setAttribute("usuarios", gu.listar());
         return "managerUser";
     }
-
+    
     @RequestMapping("atualizarUsuario")
     public String editUsuario(HttpServletRequest req, Usuario u) throws SQLException {
         GerenciadorDeUsuario gu = new GerenciadorDeUsuario();
         gu.atualizar(u);
-        req.getSession().setAttribute("usuario", gu.listar());
+        req.getSession().setAttribute("usuarios", gu.listar());
         return "managerUser";
     }
-
+    
     @RequestMapping("removerUsuario")
     public String removerUsuario(HttpServletRequest req, Usuario u) throws SQLException {
         GerenciadorDeUsuario gu = new GerenciadorDeUsuario();
         gu.remover(u);
-        req.getSession().setAttribute("usuario", gu.listar());
+        req.getSession().setAttribute("usuarios", gu.listar());
         return "managerUser";
     }
     
+<<<<<<< HEAD
     @RequestMapping("addUsuarioAjax")
     public void addUserAjax(Usuario u, HttpServletRequest req){
         
+=======
+    @RequestMapping("atualizarUsuarioAtual")
+    public String editCurrentUsuario(HttpServletRequest req, Usuario u) throws SQLException {
+        GerenciadorDeUsuario gu = new GerenciadorDeUsuario();
+        Usuario usuario = (Usuario) req.getSession().getAttribute("usuario");
+        u.setId(usuario.getId());
+        gu.atualizar(u);
+        req.getSession().setAttribute("usuario", gu.pesquisarPorId(usuario.getId()));
+        return "home";
+>>>>>>> 6c480b4eb073c43a959f0ef855fe3c839c37c564
     }
 }

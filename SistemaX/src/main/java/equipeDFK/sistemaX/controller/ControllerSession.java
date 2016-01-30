@@ -40,4 +40,10 @@ public class ControllerSession {
         return "home";
     }
     
+    @RequestMapping("deslogar")
+    public String logout(HttpServletRequest req) throws SQLException{                    
+        req.getSession().setAttribute("usuario", null);
+        return "index";
+    }
+    
 }
