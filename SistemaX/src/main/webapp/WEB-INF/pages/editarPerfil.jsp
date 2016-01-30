@@ -7,7 +7,7 @@
 <div class="automatic dj-invisible" id="editarUser">
     <div class="dj-modal__menu">
         <div class="dj-modal__title margin">
-            <h4>Editar usuário</h4>
+            <h4>Editar perfil</h4>
             <hr>
         </div>
         <div class="dj-text__center carregaImagem margin">
@@ -18,27 +18,27 @@
                 <h6>${erro}</h6>
                 <input type="file" class="dj-invisible inp-upload" name="foto" onchange="updateLogo(this)"/>
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <input type="text" class="mdl-textfield__input" name="nome" id="sample1" required="" autofocus="" value=${usuarioSelecionado.nome}>
+                    <input type="text" class="mdl-textfield__input" name="nome" id="sample1" required="" autofocus="" value=${usuarioLogado.nome}>
                     <label class="mdl-textfield__label" for="sample1">Nome de usuário</label>
                 </div><br>
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <input type="password" class="mdl-textfield__input" name="senha" id="sample2" required="" value=${usuarioSelecionado.senha}>
+                    <input type="password" class="mdl-textfield__input" name="senha" id="sample2" required="" value=${usuarioLogado.senha}>
                     <label class="mdl-textfield__label" for="sample2">Senha</label>
                 </div><br>
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <input type="text" class="mdl-textfield__input" name="email" id="sample3" required="" value=${usuarioSelecionado.email}>
+                    <input type="text" class="mdl-textfield__input" name="email" id="sample3" required="" value=${usuarioLogado.email}>
                     <label class="mdl-textfield__label" for="sample3">Email</label>
                 </div><br>
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <input type="text" class="mdl-textfield__input" name="matricula" id="sample4" required="" value=${usuarioSelecionado.matricula}>
+                    <input type="text" class="mdl-textfield__input" name="matricula" id="sample4" required="" value=${usuarioLogado.matricula}>
                     <label class="mdl-textfield__label" for="sample4">Matrícula</label>
                 </div><br>
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <input type="text" class="mdl-textfield__input" name="tipo" id="sample5" required="" value=${usuarioSelecionado.tipo}>
+                    <input type="text" class="mdl-textfield__input" name="tipo" id="sample5" required="" value=${usuarioLogado.tipo}>
                     <label class="mdl-textfield__label" for="tipo">Tipo de usuário</label>
                 </div><br><br>
                 <div class="botoes-fechar dj-text__right">
-                    <button type="submit" class="mdl-button mdl-button mdl-button--colored mdl-button--raised" onclick="editUser()">Alterar</button>
+                    <button type="submit" class="mdl-button mdl-button mdl-button--colored mdl-button--raised" onclick="adicionarUsuario()">Alterar</button>
                 </div>
             </form>
 

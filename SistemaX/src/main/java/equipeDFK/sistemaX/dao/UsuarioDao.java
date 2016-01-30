@@ -26,7 +26,7 @@ public class UsuarioDao implements UsuarioDaoIF {
     }
 
     @Override
-    public boolean cadastrar(Usuario u) throws SQLException {
+    public boolean cadastrar(Usuario u) {
         try {
 
             String SQL = "insert into usuario(email, nomedeusuario, senha, foto, tipo, matricula, status) values (?,?,?,?,?,?,?)";
@@ -42,6 +42,8 @@ public class UsuarioDao implements UsuarioDaoIF {
 
             pstm.executeUpdate();
             return true;
+        }catch(SQLException ex){
+            ex.printStackTrace();
         } finally {
             co.liberar();
         }

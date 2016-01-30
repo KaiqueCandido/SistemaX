@@ -151,3 +151,8 @@ a:hover{
     width: 50px;
     text-align: center !important;
 }
+
+#loading{
+    margin: 5px;
+    top: 15px;
+}

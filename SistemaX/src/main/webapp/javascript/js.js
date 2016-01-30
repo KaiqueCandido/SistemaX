@@ -33,19 +33,75 @@ function escondeMenu() {
     $('.automatic').addClass('dj-invisible');
 }
 
-function adicionarUsuario() {
+
+function adicionarUsuarioAjax() {
     
     var nome = $("#nome").val();
     var senha = $("#senha").val();
     var email = $("#email").val();
     var matricula = $("#matricula").val();
     var tipo = $("#tipo").val();
-
-    $.ajax({url: "addUsuario", success: function(result){
-        $(".result").html(result);
-    }});
+    var foto = $(".inp-upload").val();
     
-    $('#novoUser').removeClass('dj-invisible');
+    console.log(nome);
+
+    if (notNull(nome) && notNull(senha) && notNull(email) && notNull(matricula) && notNull(tipo)) {
+        console.log('Passou da verificação');
+        $('#loading').removeClass('dj-invisible');
+
+        var usuario = new FormData();
+        
+        usuario.append('nome', nome);
+        usuario.append('senha', senha);
+        usuario.append('email', email);
+        usuario.append('matricula', matricula);
+        usuario.append('tipo', tipo);
+        usuario.append('foto', foto);
+
+        $.ajax({
+            url: "/addUsuarioAjax",
+            type: "POST",
+            data: usuario,
+            processData: false,
+            contentType: false,
+            beforeSend: function () {
+
+            },
+            complete: function () {
+                console.log('Função completa');
+            },
+            success: function (res) {
+                console.log(res);
+                $('#loading').addClass('dj-invisible');
+            },
+            error: function (res) {
+                console.log(res);
+                $('#loading').addClass('dj-invisible');
+            }
+        });
+    } else {
+        console.log('algum deu erro');
+        if (!notNull(nome)){
+            alert('Preencha nome');
+            $('#nome').focus();
+        }
+        else if (!notNull(senha)){
+            alert('Insira uma senha válida');
+            $('#senha').focus();
+        }
+        else if (!notNull(email)){
+            alert('Insira um email válido');
+            $('#email').focus();
+        }
+        else if (!notNull(matricula)){
+            alert('Insira uma matrícula');
+            $('#matricula').focus();
+        }
+        else {
+            alert('Insira o tipo de usuário');
+            $('#tipo').focus();
+        }
+    }
 }
 
 function editarUsuario() {
@@ -69,3 +125,16 @@ $(function () {
         $(this).val("");
     });
 });
+
+
+function adicionarUsuario() {
+    $('#novoUser').removeClass('dj-invisible');
+}
+
+function notNull(x){
+    if(x !== ''){
+        return true;
+    }else{
+        return false;
+    }
+}

@@ -43,18 +43,13 @@ public class ControllerUser {
         return "managerUser";
     }
     
-
-    @RequestMapping("addUsuarioAjax")
-    public void addUserAjax(Usuario u, HttpServletRequest req){
-        
-    }
-    @RequestMapping("atualizarUsuarioAtual")
+    @RequestMapping("atualizarPerfil")
     public String editCurrentUsuario(HttpServletRequest req, Usuario u) throws SQLException {
         GerenciadorDeUsuario gu = new GerenciadorDeUsuario();
-        Usuario usuario = (Usuario) req.getSession().getAttribute("usuario");
+        Usuario usuario = (Usuario) req.getSession().getAttribute("usuarioLogado");
         u.setId(usuario.getId());
         gu.atualizar(u);
-        req.getSession().setAttribute("usuario", gu.pesquisarPorId(usuario.getId()));
+        req.getSession().setAttribute("usuarioLogado", gu.pesquisarPorId(usuario.getId()));
         return "home";
     }
 }

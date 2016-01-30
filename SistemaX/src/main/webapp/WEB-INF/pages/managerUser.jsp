@@ -24,10 +24,10 @@
                     <button class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect mdl-button--raised margin " onclick="adicionarUsuario()">
                         <img src="Icons/ic_add_black_24dp_2x.png" class="material-icons">
                     </button>
-                    <button class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect mdl-button--raised margin" disabled="">
+                    <button class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect mdl-button--raised margin" disabled="" onclick="editarUsuario()">
                         <img src="Icons/ic_edit_black_24dp_2x.png" class="material-icons">
                     </button>
-                    <button class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect mdl-button--raised margin" disabled="">
+                    <button class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect mdl-button--raised margin" disabled="" id="remove">
                         <img src="Icons/trash.png" class="material-icons">
                     </button>
                 </div>
@@ -59,7 +59,11 @@
                     <tbody>
                         <c:forEach items="${usuarios}" var="usuario">
                             <tr>
-                                <td class="dj-size__small"><input type="checkbox" onclick="liberarButton(${usuario.id})" ></td>
+                                <td class="dj-size__small">
+                                    <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox${usuario.id}">
+                                        <input type="checkbox" id="checkbox${usuario.id}" class="mdl-checkbox__input" onclick="liberarButoes(${usuario.id})">
+                                    </label>
+                                </td>
                                 <td>${usuario.nome}</td>
                                 <td>${usuario.email}</td>
                                 <td>${usuario.tipo}</td>
