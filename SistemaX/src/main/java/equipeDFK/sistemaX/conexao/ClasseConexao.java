@@ -8,8 +8,6 @@ package equipeDFK.sistemaX.conexao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -18,22 +16,23 @@ import java.util.logging.Logger;
 public class ClasseConexao {
 
     private Connection conexao;
+    private PreparedStatement statment;
 
     public Connection abrir() throws SQLException {
         if (this.conexao == null || this.conexao.isClosed()) {
             this.conexao = ConnectionFactory.getInstance().getConnection();
+            this.statment = null;
         }
         return conexao; 
     }
 
-    public void liberar() {
-       
+    public void liberar() throws SQLException {
+        if (this.statment != null) {
+            this.statment.close();
+            this.statment = null;
+        }
         if (this.conexao != null) {
-            try {
-                this.conexao.close();
-            } catch (SQLException ex) {
-                Logger.getLogger(ClasseConexao.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            this.conexao.close();
             this.conexao = null;
         }
     }

@@ -30,8 +30,4 @@ public class ControllerBreadCrumb {
         return "managerUser";
     }
 
-    @RequestMapping("newUser")
-    public String newUser() {
-        return "novoUsuario";
-    }
 }
