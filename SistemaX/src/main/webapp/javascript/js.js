@@ -148,8 +148,8 @@ $(document).ready(function () {
         monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
         monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
         dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sabado'],
-        dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'],                        
-        buttonText: {                                                
+        dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'],
+        buttonText: {
             today: "Hoje",
             month: "Mês",
             week: "Semana",
@@ -175,7 +175,10 @@ $(document).ready(function () {
             $('#calendar').fullCalendar('unselect');
         },
         editable: true,
-        eventLimit: true // allow "more" link when too many events        
+        eventLimit: true,
+        events: {
+            url: 'getEventos.json'
+        }
     });
 
 });

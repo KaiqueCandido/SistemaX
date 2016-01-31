@@ -29,7 +29,7 @@
                     <li>
                         <div class="funcionalidades">
                             <img src="Icons/rest5.png" alt="funcionalidade" title="Gerenciar Feriados" class="img-funcionalidade">
-                            <h6><a href="managerHoliday">Gerenciar Feriados</a></h6>
+                            <h6><a href="montaAgenda">Gerenciar Feriados</a></h6>
                         </div>
                     </li>
                 </ul>

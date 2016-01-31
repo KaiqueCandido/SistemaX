@@ -7,6 +7,7 @@ package equipeDFK.sistemaX.interfaces;
 
 import equipeDFK.sistemaX.entidades.Feriado;
 import java.sql.SQLException;
+import java.util.List;
 
 /**
  *
@@ -42,4 +43,6 @@ public interface FeriadoDaoIF {
      * @throws SQLException 
      */
     public Feriado pesquisarFeriado (String dataFeriado) throws SQLException;
+    
+    public List<Feriado> listar() throws SQLException;
 }

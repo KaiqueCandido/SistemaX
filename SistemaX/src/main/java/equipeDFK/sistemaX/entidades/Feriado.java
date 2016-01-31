@@ -5,39 +5,62 @@
  */
 package equipeDFK.sistemaX.entidades;
 
-import java.util.Date;
-
 /**
  *
  * @author NandaPC
  */
 public class Feriado {
 
-    private String nomeFeriado;
-    private String dataFeriado;
+    private String title;
+    private String start;
+    private String end;
+    private String url;
 
     public Feriado() {
     }
 
-    public Feriado(String nomeFeriado, String dataFeriado) {
-        this.nomeFeriado = nomeFeriado;
-        this.dataFeriado = dataFeriado;
+    public Feriado(String title, String start, String end, String url) {
+        this.title = title;
+        this.start = start;
+        this.end = end;
+        this.url = url;
     }
 
-    public String getNomeFeriado() {
-        return nomeFeriado;
+    public String getTitle() {
+        return title;
     }
 
-    public void setNomeFeriado(String nomeFeriado) {
-        this.nomeFeriado = nomeFeriado;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public String getDataFeriado() {
-        return dataFeriado;
+    public String getStart() {
+        return start;
     }
 
-    public void setDataFeriado(String dataFeriado) {
-        this.dataFeriado = dataFeriado;
+    public void setStart(String start) {
+        this.start = start;
+    }
+
+    public String getEnd() {
+        return end;
+    }
+
+    public void setEnd(String end) {
+        this.end = end;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    @Override
+    public String toString() {
+        return "Feriado{" + "title=" + title + ", start=" + start + ", end=" + end + ", url=" + url + '}';
     }
 
 }

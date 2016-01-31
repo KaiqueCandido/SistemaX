@@ -10,29 +10,30 @@ import equipeDFK.sistemaX.fabricas.DaoFactory;
 import equipeDFK.sistemaX.fabricas.DaoFactoryIF;
 import equipeDFK.sistemaX.interfaces.FeriadoDaoIF;
 import java.sql.SQLException;
+import java.util.List;
 
 /**
  *
  * @author NandaPC
  */
 public class GerenciadorDeFeriado {
- 
+
     /**
-     * 
+     *
      * @param feriado
      * @return
-     * @throws SQLException 
+     * @throws SQLException
      */
-    public boolean cadastrar(Feriado feriado) throws SQLException {       
+    public boolean cadastrar(Feriado feriado) throws SQLException {
         DaoFactoryIF fabrica = DaoFactory.creatFactory();
         FeriadoDaoIF feriadoDao = fabrica.criaFeriadoDao();
         return feriadoDao.cadastrar(feriado);
     }
 
     /**
-     * 
+     *
      * @param feriado
-     * @throws SQLException 
+     * @throws SQLException
      */
     public void remover(Feriado feriado) throws SQLException {
         DaoFactoryIF fabrica = DaoFactory.creatFactory();
@@ -41,25 +42,31 @@ public class GerenciadorDeFeriado {
     }
 
     /**
-     * 
+     *
      * @param feriado
-     * @throws SQLException 
+     * @throws SQLException
      */
     public void atualizar(Feriado feriado) throws SQLException {
         DaoFactoryIF fabrica = DaoFactory.creatFactory();
         FeriadoDaoIF feriadoDao = fabrica.criaFeriadoDao();
         feriadoDao.atualizar(feriado);
     }
-    
-   /**
-    * 
-    * @param dataFeriado
-    * @return
-    * @throws SQLException 
-    */
-    public Feriado pesquisar(String dataFeriado) throws SQLException{
+
+    /**
+     *
+     * @param dataFeriado
+     * @return
+     * @throws SQLException
+     */
+    public Feriado pesquisar(String dataFeriado) throws SQLException {
         DaoFactoryIF fabrica = DaoFactory.creatFactory();
         FeriadoDaoIF feriadoDao = fabrica.criaFeriadoDao();
         return feriadoDao.pesquisarFeriado(dataFeriado);
+    }
+
+    public List<Feriado> listar() throws SQLException {
+        DaoFactoryIF fabrica = DaoFactory.creatFactory();
+        FeriadoDaoIF feriadoDao = fabrica.criaFeriadoDao();
+        return feriadoDao.listar();
     }
 }

@@ -10,10 +10,11 @@ import equipeDFK.sistemaX.conexao.ConnectionFactory;
 import equipeDFK.sistemaX.entidades.Feriado;
 import equipeDFK.sistemaX.interfaces.FeriadoDaoIF;
 import java.sql.Connection;
-import java.util.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -45,12 +46,11 @@ public class FeriadoDao implements FeriadoDaoIF {
 
             //Date data = feriado.getDataFeriado();
             //java.sql.Date dataConvertida = new java.sql.Date(data.getTime());
-
             String SQl = "insert into Feriado(nomeFeriado, dataFeriado) values (?,?)";
 
             pstm = con.prepareStatement(SQl);
-            pstm.setString(1, feriado.getNomeFeriado());
-            pstm.setString(2, feriado.getDataFeriado());
+            pstm.setString(1, feriado.getTitle());
+            pstm.setString(2, feriado.getStart());
 
             pstm.executeUpdate();
 
@@ -72,11 +72,10 @@ public class FeriadoDao implements FeriadoDaoIF {
 
             //Date data = feriado.getDataFeriado();
             //java.sql.Date dataConvertida = new java.sql.Date(data.getTime());
-
             String SQL = "delete from Feriado where dataFeriado=?";
 
             pstm = con.prepareStatement(SQL);
-            pstm.setString(1, feriado.getDataFeriado());
+            pstm.setString(1, feriado.getStart());
 
             pstm.executeUpdate();
 
@@ -97,11 +96,10 @@ public class FeriadoDao implements FeriadoDaoIF {
 
             //Date data = feriado.getDataFeriado();
             //java.sql.Date dataConvertida = new java.sql.Date(data.getTime());
-
             String SQL = "update Feriado set nomeFeriado=?, dataFeriado=? where id=? ";
             pstm = con.prepareStatement(SQL);
-            pstm.setString(1, feriado.getNomeFeriado());
-            pstm.setString(2, feriado.getDataFeriado());
+            pstm.setString(1, feriado.getTitle());
+            pstm.setString(2, feriado.getStart());
 
             pstm.executeUpdate();
 
@@ -122,14 +120,43 @@ public class FeriadoDao implements FeriadoDaoIF {
 
             Feriado feriado1 = new Feriado();
 
-            while (result.next()) {                
-                feriado1.setNomeFeriado(result.getString("nomeFeriado"));
-                feriado1.setDataFeriado(result.getString("dataFeriado"));
+            while (result.next()) {
+                feriado1.setTitle(result.getString("nomeFeriado"));
+                feriado1.setStart(result.getString("dataFeriado"));
 
                 return feriado1;
             }
 
             return null;
+        } finally {
+            co.liberar();
+        }
+    }
+
+    public List<Feriado> listar() throws SQLException {
+        try {
+            String SQL = "select * from feriado";
+
+            pstm = con.prepareStatement(SQL);
+
+            ResultSet result = pstm.executeQuery();
+
+            List<Feriado> feriados = new ArrayList<>();
+
+            while (result.next()) {
+                Feriado feriado = new Feriado();
+                
+                String split[] = result.getString("dataferiado").split("-");                
+                String data = split[1] + "-" + split[2] + "-" + split[0];
+                System.out.println(data);
+                
+                feriado.setTitle(result.getString("nomeFeriado"));
+                feriado.setStart(data);
+
+                feriados.add(feriado);
+            }
+
+            return feriados.isEmpty() ? null : feriados;
         } finally {
             co.liberar();
         }

@@ -7,6 +7,7 @@ package equipeDFK.sistemaX.teste;
  */
 import equipeDFK.sistemaX.entidades.Feriado;
 import equipeDFK.sistemaX.entidades.Usuario;
+import equipeDFK.sistemaX.gerenciadores.GerenciadorDeFeriado;
 import equipeDFK.sistemaX.gerenciadores.GerenciadorDeUsuario;
 import equipeDFK.sistemaX.openCSV.OpenCSV;
 import java.io.File;
@@ -22,13 +23,8 @@ import java.util.List;
 public class ClasseTeste {
 
     public static void main(String[] args) throws SQLException, FileNotFoundException {
-        GerenciadorDeUsuario gu = new GerenciadorDeUsuario();
-        Usuario u = gu.pesquisarPorNomeDeUsuario("KaiqueCandido");
-        u.setNome("KaiqueCandidooliveira");
-        System.out.println(u);
-          
-
-        
+        GerenciadorDeFeriado gf = new GerenciadorDeFeriado();
+        System.out.println(gf.listar().get(0));
 
     }
 

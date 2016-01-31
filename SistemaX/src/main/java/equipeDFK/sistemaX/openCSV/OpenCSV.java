@@ -35,8 +35,8 @@ public class OpenCSV {
                     String split[] = feriado.split(",");
 
                     Feriado f = new Feriado();
-                    f.setDataFeriado(split[0]);
-                    f.setNomeFeriado(split[1]);
+                    f.setStart(split[0]);
+                    f.setTitle(split[1]);
                     feriados.add(f);
 
                     values = reader.readNext();
