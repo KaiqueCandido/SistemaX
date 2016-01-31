@@ -58,7 +58,7 @@
                     </thead>
                     <tbody>
                         <c:forEach items="${usuarios}" var="usuario">
-                            <tr>
+                            <tr id="kaique">
                                 <td class="dj-size__small">
                                     <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox${usuario.id}">
                                         <input type="checkbox" id="checkbox${usuario.id}" class="mdl-checkbox__input" onclick="liberarButoes(${usuario.id})">

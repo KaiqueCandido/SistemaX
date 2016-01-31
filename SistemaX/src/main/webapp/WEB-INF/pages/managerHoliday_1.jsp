@@ -30,23 +30,11 @@
                     </button>
                 </div>
                 <div class="dj-text__right menuSearch">
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
-                         mdl-textfield--floating-label mdl-textfield--align-right dj-spacer__rigth--menor">
-                        <label>Buscar Usuário</label>
-                        <label class="mdl-button mdl-js-button mdl-button--icon"
-                               for="searchUser">
-                            <img src="Icons/ic_search_black_24dp_2x.png" class="material-icons">
-                        </label>
-                        <div class="mdl-textfield__expandable-holder">
-                            <input class="mdl-textfield__input input-search" type="text" name="sample" id="searchUser" accesskey="b">
-                        </div>
-                    </div>
+                    
                 </div>
-                <div class="dj-tabela__overflow">
-                    <div id="calendar"></div>
-                </div>
+            </div><br>
+            
             </div>
         </div>
-    </div>
-</body>
+    </body>
 </html>

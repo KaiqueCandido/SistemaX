@@ -35,14 +35,14 @@ function escondeMenu() {
 
 
 function adicionarUsuarioAjax() {
-    
+
     var nome = $("#nome").val();
     var senha = $("#senha").val();
     var email = $("#email").val();
     var matricula = $("#matricula").val();
     var tipo = $("#tipo").val();
     var foto = $(".inp-upload").val();
-    
+
     console.log(nome);
 
     if (notNull(nome) && notNull(senha) && notNull(email) && notNull(matricula) && notNull(tipo)) {
@@ -50,7 +50,7 @@ function adicionarUsuarioAjax() {
         $('#loading').removeClass('dj-invisible');
 
         var usuario = new FormData();
-        
+
         usuario.append('nome', nome);
         usuario.append('senha', senha);
         usuario.append('email', email);
@@ -81,19 +81,19 @@ function adicionarUsuarioAjax() {
         });
     } else {
         console.log('algum deu erro');
-        if (!notNull(nome)){
+        if (!notNull(nome)) {
             alert('Preencha nome');
             $('#nome').focus();
         }
-        else if (!notNull(senha)){
+        else if (!notNull(senha)) {
             alert('Insira uma senha válida');
             $('#senha').focus();
         }
-        else if (!notNull(email)){
+        else if (!notNull(email)) {
             alert('Insira um email válido');
             $('#email').focus();
         }
-        else if (!notNull(matricula)){
+        else if (!notNull(matricula)) {
             alert('Insira uma matrícula');
             $('#matricula').focus();
         }
@@ -131,10 +131,96 @@ function adicionarUsuario() {
     $('#novoUser').removeClass('dj-invisible');
 }
 
-function notNull(x){
-    if(x !== ''){
+function notNull(x) {
+    if (x !== '') {
         return true;
-    }else{
+    } else {
         return false;
     }
 }
+
+$(document).ready(function () {
+
+    $('#calendar').fullCalendar({
+        header: {
+            left: 'Anterior,Proximo today',
+            center: 'title',
+            right: 'month,agendaWeek,agendaDay'
+        },
+        defaultDate: '2016-01-12',
+        selectable: true,
+        selectHelper: true,
+        select: function (start, end) {
+            var title = prompt('Event Title:');
+            var eventData;
+            if (title) {
+                eventData = {
+                    title: title,
+                    start: start,
+                    end: end
+                };
+                $('#calendar').fullCalendar('renderEvent', eventData, true); // stick? = true
+            }
+            $('#calendar').fullCalendar('unselect');
+        },
+        editable: true,
+        eventLimit: true, // allow "more" link when too many events
+        events: [
+            {
+                title: 'All Day Event',
+                start: '2016-01-01'
+            },
+            {
+                title: 'Long Event',
+                start: '2016-01-07',
+                end: '2016-01-10'
+            },
+            {
+                id: 999,
+                title: 'Repeating Event',
+                start: '2016-01-09T16:00:00'
+            },
+            {
+                id: 999,
+                title: 'Repeating Event',
+                start: '2016-01-16T16:00:00'
+            },
+            {
+                title: 'Conference',
+                start: '2016-01-11',
+                end: '2016-01-13'
+            },
+            {
+                title: 'Meeting',
+                start: '2016-01-12T10:30:00',
+                end: '2016-01-12T12:30:00'
+            },
+            {
+                title: 'Lunch',
+                start: '2016-01-12T12:00:00'
+            },
+            {
+                title: 'Meeting',
+                start: '2016-01-12T14:30:00'
+            },
+            {
+                title: 'Happy Hour',
+                start: '2016-01-12T17:30:00'
+            },
+            {
+                title: 'Dinner',
+                start: '2016-01-12T20:00:00'
+            },
+            {
+                title: 'Birthday Party',
+                start: '2016-01-13T07:00:00'
+            },
+            {
+                title: 'Click for Google',
+                url: 'http://google.com/',
+                start: '2016-01-28'
+            }
+        ]
+    });
+
+});

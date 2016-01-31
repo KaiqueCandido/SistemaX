@@ -29,5 +29,10 @@ public class ControllerBreadCrumb {
         req.getSession().setAttribute("usuarios", gu.listar());
         return "managerUser";
     }
+    
+    @RequestMapping("managerHoliday")
+    public String managerHoliday(HttpServletRequest req) throws SQLException {                
+        return "managerHoliday";
+    }
 
 }
