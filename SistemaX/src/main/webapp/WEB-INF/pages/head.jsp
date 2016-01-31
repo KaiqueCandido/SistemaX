@@ -17,10 +17,11 @@
     <script src="css/showImage.js" type="text/javascript"></script>
     <script src="javascript/jquery-2.1.4.min.js" type="text/javascript"></script>
     <script src="javascript/js.js" type="text/javascript"></script>
-    <script src="javascript/material.js" type="text/javascript"></script>
+    <script src="javascript/material.js" type="text/javascript"></script>    
     
-    <script src="javascript/moment.min.js"></script>    
-    <script src="javascript/fullcalendar.min.js"></script>
+    <script src="javascript/moment.min.js" type="text/javascript"></script>    
+    <script src="javascript/fullcalendar.min.js" type="text/javascript"></script>
+    <script src="javascript/lang/pt-br.js" type="text/javascript"></script>
 
     <title>Sistema X</title>
 </head>
