@@ -131,6 +131,10 @@ function adicionarUsuario() {
     $('#novoUser').removeClass('dj-invisible');
 }
 
+function importarFeriado() {
+    $('#importarFeriado').removeClass('dj-invisible');
+}
+
 function notNull(x) {
     if (x !== '') {
         return true;

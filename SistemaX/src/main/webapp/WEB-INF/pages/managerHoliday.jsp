@@ -16,6 +16,7 @@
             <label> ></label>
             <label>Gerenciar Feriados</label>
         </div>
+        <%@include file="importarFeriado.jsp" %>
         <div class="conteudo">
             <div class="crud-user">
                 <div class="dj-float__left">
@@ -26,6 +27,9 @@
                         <img src="Icons/ic_edit_black_24dp_2x.png" class="material-icons">
                     </button>
                     <button class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect mdl-button--raised margin" disabled="" id="remove" onclick="removerFeriado()">
+                        <img src="Icons/trash.png" class="material-icons">
+                    </button>
+                    <button class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect mdl-button--raised margin" id="importa" onclick="importarFeriado()">
                         <img src="Icons/trash.png" class="material-icons">
                     </button>
                 </div>
@@ -43,7 +47,7 @@
                     </div>
                 </div>
                 <div class="dj-tabela__overflow">
-                    
+
                     <div id="calendar"></div>                    
                 </div>
             </div>

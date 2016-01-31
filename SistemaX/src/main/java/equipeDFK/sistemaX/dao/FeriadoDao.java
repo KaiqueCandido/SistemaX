@@ -145,11 +145,11 @@ public class FeriadoDao implements FeriadoDaoIF {
 
             while (result.next()) {
                 Feriado feriado = new Feriado();
-                
-                String split[] = result.getString("dataferiado").split("-");                
+
+                String split[] = result.getString("dataferiado").split("-");
                 String data = split[1] + "-" + split[2] + "-" + split[0];
                 System.out.println(data);
-                
+
                 feriado.setTitle(result.getString("nomeFeriado"));
                 feriado.setStart(data);
 
@@ -157,6 +157,26 @@ public class FeriadoDao implements FeriadoDaoIF {
             }
 
             return feriados.isEmpty() ? null : feriados;
+        } finally {
+            co.liberar();
+        }
+    }
+
+    public boolean importaferiado(List feriados) throws SQLException {
+        try {
+            for (Object feriado : feriados) {
+
+                String SQl = "insert into Feriado(nomeFeriado, dataFeriado) values (?,?)";
+
+                Feriado f = (Feriado) feriado;
+                pstm = con.prepareStatement(SQl);
+                pstm.setString(1, f.getTitle());
+                pstm.setString(2, f.getStart());
+
+                pstm.executeUpdate();
+            }
+
+            return true;
         } finally {
             co.liberar();
         }

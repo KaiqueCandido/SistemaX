@@ -9,6 +9,8 @@ import equipeDFK.sistemaX.entidades.Feriado;
 import equipeDFK.sistemaX.fabricas.DaoFactory;
 import equipeDFK.sistemaX.fabricas.DaoFactoryIF;
 import equipeDFK.sistemaX.interfaces.FeriadoDaoIF;
+import equipeDFK.sistemaX.openCSV.OpenCSV;
+import java.io.File;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -68,5 +70,11 @@ public class GerenciadorDeFeriado {
         DaoFactoryIF fabrica = DaoFactory.creatFactory();
         FeriadoDaoIF feriadoDao = fabrica.criaFeriadoDao();
         return feriadoDao.listar();
+    }
+    
+    public boolean importaferiado(List feriados) throws SQLException {
+        DaoFactoryIF fabrica = DaoFactory.creatFactory();
+        FeriadoDaoIF feriadoDao = fabrica.criaFeriadoDao();
+        return feriadoDao.importaferiado(feriados);
     }
 }

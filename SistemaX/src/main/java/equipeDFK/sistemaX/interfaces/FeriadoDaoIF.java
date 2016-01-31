@@ -45,4 +45,6 @@ public interface FeriadoDaoIF {
     public Feriado pesquisarFeriado (String dataFeriado) throws SQLException;
     
     public List<Feriado> listar() throws SQLException;
+    
+    public boolean importaferiado(List feriados) throws SQLException;
 }

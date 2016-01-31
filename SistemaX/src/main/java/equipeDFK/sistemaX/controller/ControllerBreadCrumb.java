@@ -33,6 +33,6 @@ public class ControllerBreadCrumb {
     @RequestMapping("managerHoliday")
     public String managerHoliday(HttpServletRequest req) throws SQLException {                
         return "managerHoliday";
-    }
-
+    }    
+            
 }
