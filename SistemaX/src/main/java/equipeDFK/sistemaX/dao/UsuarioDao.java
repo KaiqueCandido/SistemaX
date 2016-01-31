@@ -87,7 +87,7 @@ public class UsuarioDao implements UsuarioDaoIF {
     @Override
     public Usuario pesquisarPorNomeDeUsuario(String nome) throws SQLException {
         try {
-            String SQL = "select * from usuario where nomedeusuario ilike '%" + nome + "%'";
+            String SQL = "select * from usuario where nomedeusuario = '" + nome + "'";
 
             pstm = con.prepareStatement(SQL);
             ResultSet result = pstm.executeQuery();
@@ -116,7 +116,7 @@ public class UsuarioDao implements UsuarioDaoIF {
     @Override
     public Usuario pesquisarPorEmail(String email) throws SQLException {
         try {
-            String SQL = "select * from usuario where email ilike '%" + email + "%'";
+            String SQL = "select * from usuario where email ='" + email + "'";
 
             pstm = con.prepareStatement(SQL);
             ResultSet result = pstm.executeQuery();
@@ -145,7 +145,7 @@ public class UsuarioDao implements UsuarioDaoIF {
     @Override
     public Usuario pesquisarPorMatricula(String matricula) throws SQLException {
         try {
-            String SQL = "select * from usuario where matricula ilike '%" + matricula + "%'";
+            String SQL = "select * from usuario where matricula='" + matricula + "'";
 
             pstm = con.prepareStatement(SQL);
             ResultSet result = pstm.executeQuery();
@@ -205,7 +205,7 @@ public class UsuarioDao implements UsuarioDaoIF {
             if (login.contains("@")) {
                 Usuario u = this.pesquisarPorEmail(login);
                 if (u != null) {
-                    if (u.getSenha().equalsIgnoreCase(senha)) {
+                    if (u.getSenha().equals(senha)) {
                         return u;
                     } else {
                         return null;
@@ -217,7 +217,7 @@ public class UsuarioDao implements UsuarioDaoIF {
             } else {
                 Usuario u = this.pesquisarPorNomeDeUsuario(login);
                 if (u != null) {
-                    if (u.getSenha().equalsIgnoreCase(senha)) {
+                    if (u.getSenha().equals(senha)) {
                         return u;
                     } else {
                         return null;
