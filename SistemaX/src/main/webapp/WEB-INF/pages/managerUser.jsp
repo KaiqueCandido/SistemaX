@@ -27,7 +27,7 @@
                     <button class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect mdl-button--raised margin" disabled="" onclick="editarUsuario()" id="edit">
                         <img src="Icons/ic_edit_black_24dp_2x.png" class="material-icons">
                     </button>
-                    <button class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect mdl-button--raised margin" disabled="" id="remove">
+                    <button class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect mdl-button--raised margin" disabled="" id="remove" onclick="removerUsuario()">
                         <img src="Icons/trash.png" class="material-icons">
                     </button>
                 </div>
@@ -45,6 +45,9 @@
                     </div>
                 </div>
             </div><br>
+            <div class="dj-text__center">
+                <h6>${result}</h6>
+            </div>
             <div class="dj-tabela__overflow">
                 <table id="tabela" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp dj-tabela__big">
                     <thead>
@@ -57,7 +60,7 @@
                     </thead>
                     <tbody>
                         <c:forEach items="${usuarios}" var="usuario">
-                            <tr id="linha${usuario.id}" onclick="liberarBotoes(${usuario.id})" class="">
+                            <tr id="linha${usuario.id}" onclick="liberarBotoes(${usuario.id})">
                                 <td>${usuario.nome}</td>
                                 <td>${usuario.email}</td>
                                 <td>${usuario.tipo}</td>
@@ -66,6 +69,12 @@
                         </c:forEach>                     
                     </tbody>
                 </table>
+                <div class="dj-invisible">
+                    <form action="removerUsuario" method="post">
+                        <input name="id" value="" id="removeUsuario">
+                        <input type="submit" id="subRemoveUsuario">
+                    </form>
+                </div>
             </div>
         </div>
     </body>

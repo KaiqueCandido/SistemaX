@@ -69,6 +69,15 @@ $(document).ready(function () {
         var arq = jQuery(".inp-upload").val().replace(/^.*\\/, "");
         jQuery(".btn-upload").text(arq);
     });
+    
+    jQuery(".btn-upload2").click(function () {
+        jQuery(".inp-upload2").trigger('click');
+    });
+
+    jQuery(".inp-upload2").change(function () {
+        var arq = jQuery(".inp-upload2").val().replace(/^.*\\/, "");
+        jQuery(".btn-upload2").text(arq);
+    });
 
 });
 
@@ -79,71 +88,29 @@ function escondeMenu() {
 
 function adicionarUsuarioAjax() {
 
-    var nome = $("#nome").val();
-    var senha = $("#senha").val();
-    var email = $("#email").val();
-    var matricula = $("#matricula").val();
-    var tipo = $("#tipo").val();
-    var foto = $(".inp-upload").val();
-
-    console.log(nome);
-
-    if (notNull(nome) && notNull(senha) && notNull(email) && notNull(matricula) && notNull(tipo)) {
-        console.log('Passou da verificação');
-        $('#loading').removeClass('dj-invisible');
-
-        var usuario = new FormData();
-
-        usuario.append('nome', nome);
-        usuario.append('senha', senha);
-        usuario.append('email', email);
-        usuario.append('matricula', matricula);
-        usuario.append('tipo', tipo);
-        usuario.append('foto', foto);
-
         $.ajax({
-            url: "addUsuarioAjax",
+            url: "/AddUsuarioAjaxServlet",
             type: "POST",
-            data: usuario,
+            data: idClicado,
             processData: false,
             contentType: false,
             beforeSend: function () {
 
             },
             complete: function () {
-                console.log('Função completa');
+                
             },
-            success: function (res) {
-                console.log(res);
-                $('#loading').addClass('dj-invisible');
+            success: function () {
+                
             },
-            error: function (res) {
-                console.log(res);
-                $('#loading').addClass('dj-invisible');
+            error: function () {
+                
             }
         });
-    } else {
-        console.log('algum deu erro');
-        if (!notNull(nome)) {
-            alert('Preencha nome');
-            $('#nome').focus();
-        } else if (!notNull(senha)) {
-            alert('Insira uma senha válida');
-            $('#senha').focus();
-        } else if (!notNull(email)) {
-            alert('Insira um email válido');
-            $('#email').focus();
-        } else if (!notNull(matricula)) {
-            alert('Insira uma matrícula');
-            $('#matricula').focus();
-        } else {
-            alert('Insira o tipo de usuário');
-            $('#tipo').focus();
-        }
-    }
 }
 
 function editarUsuario() {
+    adicionarUsuario();
     $('#editarUser').removeClass('dj-invisible');
 }
 
@@ -212,4 +179,13 @@ function setarCheckbox(idUsuario) {
     $('.checkAutomatic').removeAttr('checked');
     $('#checkbox' + idUsuario).attr('checked');
 
+}
+
+function removerUsuario(){
+    
+    b = window.confirm("Deseja realmente remover este usuário?");
+    if (b){
+        $('#removeUsuario').val(idClicado);
+        $('#subRemoveUsuario').trigger('click');
+    }
 }

@@ -8,6 +8,8 @@ package equipeDFK.sistemaX.controller;
 import equipeDFK.sistemaX.entidades.Usuario;
 import equipeDFK.sistemaX.gerenciadores.GerenciadorDeUsuario;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,10 +22,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ControllerUser {
     
     @RequestMapping("addUsuario")
-    public String addUsuario(HttpServletRequest req, Usuario u) throws SQLException {
+    public String addUsuario(HttpServletRequest req, Usuario u)  {
         GerenciadorDeUsuario gu = new GerenciadorDeUsuario();
-        gu.cadastrar(u);
-        req.getSession().setAttribute("usuarios", gu.listar());
+        boolean r = false;
+        try {
+            r = gu.cadastrar(u);
+            req.getSession().setAttribute("usuarios", gu.listar());
+        } catch (SQLException ex) {
+            Logger.getLogger(ControllerUser.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        if (r){
+            req.setAttribute("result", "Usuário cadastrado com sucesso!");
+        }else{
+            req.setAttribute("result", "Erro ao cadastrar usuário.");
+        }
+        
         return "managerUser";
     }
     
@@ -36,8 +50,9 @@ public class ControllerUser {
     }
     
     @RequestMapping("removerUsuario")
-    public String removerUsuario(HttpServletRequest req, Usuario u) throws SQLException {
+    public String removerUsuario(HttpServletRequest req, int id) throws SQLException {
         GerenciadorDeUsuario gu = new GerenciadorDeUsuario();
+        Usuario u = gu.pesquisarPorId(id);
         gu.remover(u);
         req.getSession().setAttribute("usuarios", gu.listar());
         return "managerUser";

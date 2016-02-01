@@ -7,14 +7,11 @@ package equipeDFK.sistemaX.controller;
 
 import equipeDFK.sistemaX.gerenciadores.GerenciadorDeFeriado;
 import equipeDFK.sistemaX.openCSV.OpenCSV;
-import java.io.File;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -36,11 +33,10 @@ public class ControllerAgenda {
     @RequestMapping(value = "getEventos.json")
     public @ResponseBody List GetEventos() throws SQLException {
         GerenciadorDeFeriado gf = new GerenciadorDeFeriado();
-        List eventos = new ArrayList();       
-        eventos = gf.listar();       
-        for (Object evento : eventos) {
+        List eventos = gf.listar();  
+        eventos.stream().forEach((evento) -> {
             System.out.println(evento);
-        }        
+        });        
         return eventos;
     }
     
@@ -50,11 +46,10 @@ public class ControllerAgenda {
         OpenCSV opencsv = new OpenCSV();
         //Tem que passar o caminho do arquivo
         //gf.importaferiado(opencsv.lerCSV(new File()));
-        List eventos = new ArrayList();       
-        eventos = gf.listar();       
-        for (Object evento : eventos) {
+        List eventos = gf.listar();
+        eventos.stream().forEach((evento) -> {
             System.out.println(evento);
-        }        
+        });        
         return eventos;
     }
     
