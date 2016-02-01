@@ -24,7 +24,7 @@
                     <button class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect mdl-button--raised margin " onclick="adicionarUsuario()">
                         <img src="Icons/ic_add_black_24dp_2x.png" class="material-icons">
                     </button>
-                    <button class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect mdl-button--raised margin" disabled="" onclick="editarUsuario()" id="edit">
+                    <button class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect mdl-button--raised margin" disabled="" id="edit">
                         <img src="Icons/ic_edit_black_24dp_2x.png" class="material-icons">
                     </button>
                     <button class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect mdl-button--raised margin" disabled="" id="remove" onclick="removerUsuario()">

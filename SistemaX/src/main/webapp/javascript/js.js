@@ -78,20 +78,17 @@ $(document).ready(function () {
         var arq = jQuery(".inp-upload2").val().replace(/^.*\\/, "");
         jQuery(".btn-upload2").text(arq);
     });
-
-});
-
-function escondeMenu() {
-    $('.automatic').addClass('dj-invisible');
-}
-
-
-function adicionarUsuarioAjax() {
-
+    
+    $('#edit').click(function (){
+        
+        var formData = new FormData();
+        
+        formData.append("idUsuario", idClicado);
+        
         $.ajax({
-            url: "/AddUsuarioAjaxServlet",
-            type: "POST",
-            data: idClicado,
+            url: 'ajaxUser',
+            type: 'POST',
+            data: formData,
             processData: false,
             contentType: false,
             beforeSend: function () {
@@ -100,18 +97,26 @@ function adicionarUsuarioAjax() {
             complete: function () {
                 
             },
-            success: function () {
-                
+            success: function (res) {
+                console.log(res);
             },
             error: function () {
                 
             }
         });
+        
+        $('#editarUser').removeClass('dj-invisible');
+    });
+
+});
+
+function escondeMenu() {
+    $('.automatic').addClass('dj-invisible');
 }
 
+
 function editarUsuario() {
-    adicionarUsuario();
-    $('#editarUser').removeClass('dj-invisible');
+    retornaUsuario();
 }
 
 $(function () {
