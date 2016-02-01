@@ -24,7 +24,7 @@ public class ClasseTeste {
 
     public static void main(String[] args) throws SQLException, FileNotFoundException {
         GerenciadorDeFeriado gf = new GerenciadorDeFeriado();
-        System.out.println(gf.listar().get(0));
+        gf.cadastrar(new Feriado("teste", "2016-02-08", null, null));
 
     }
 

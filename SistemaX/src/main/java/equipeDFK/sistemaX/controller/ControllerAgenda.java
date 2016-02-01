@@ -5,6 +5,7 @@
  */
 package equipeDFK.sistemaX.controller;
 
+import equipeDFK.sistemaX.entidades.Feriado;
 import equipeDFK.sistemaX.gerenciadores.GerenciadorDeFeriado;
 import equipeDFK.sistemaX.openCSV.OpenCSV;
 import java.sql.SQLException;
@@ -31,17 +32,17 @@ public class ControllerAgenda {
     }
 
     @RequestMapping(value = "getEventos.json")
-    public @ResponseBody List GetEventos() throws SQLException {
+    public @ResponseBody
+    List GetEventos() throws SQLException {
         GerenciadorDeFeriado gf = new GerenciadorDeFeriado();
-        List eventos = gf.listar();  
-        eventos.stream().forEach((evento) -> {
-            System.out.println(evento);
-        });        
+        List eventos = gf.listar();
+        
         return eventos;
     }
-    
+
     @RequestMapping(value = "openCSV")
-    public @ResponseBody List OpenCSV() throws SQLException {
+    public @ResponseBody
+    List OpenCSV() throws SQLException {
         GerenciadorDeFeriado gf = new GerenciadorDeFeriado();
         OpenCSV opencsv = new OpenCSV();
         //Tem que passar o caminho do arquivo
@@ -49,14 +50,21 @@ public class ControllerAgenda {
         List eventos = gf.listar();
         eventos.stream().forEach((evento) -> {
             System.out.println(evento);
-        });        
+        });
         return eventos;
     }
-    
-    
+
     @RequestMapping("importarFeriado")
-    public String importarFeriado(HttpServletRequest req) throws SQLException {                
+    public String importarFeriado(HttpServletRequest req) throws SQLException {
         return "importarFeriado";
+    }
+
+    @RequestMapping("novoFeriado")
+    public String novoFeriado(HttpServletRequest req) throws SQLException {
+        GerenciadorDeFeriado gf = new GerenciadorDeFeriado();
+        Feriado f = new Feriado(req.getParameter("title"), req.getParameter("start"), null, null);
+        gf.cadastrar(f);
+        return "managerHoliday";
     }
 
 }

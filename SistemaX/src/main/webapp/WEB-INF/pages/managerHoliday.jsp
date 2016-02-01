@@ -17,6 +17,7 @@
             <label>Gerenciar Feriados</label>
         </div>
         <%@include file="importarFeriado.jsp" %>
+        <%@include file="novoFeriado.jsp" %>
         <div class="conteudo">
             <div class="crud-user">
                 <div class="dj-float__left">
