@@ -13,8 +13,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -42,22 +47,27 @@ public class FeriadoDao implements FeriadoDaoIF {
      */
     @Override
     public boolean cadastrar(Feriado feriado) throws SQLException {
-        try {
-
-            //Date data = feriado.getDataFeriado();
-            //java.sql.Date dataConvertida = new java.sql.Date(data.getTime());
+        try {            
+            String data[] = feriado.getStart().split("-");
+            String dataCorreta = data[2] + "/" + data[1] + "/" + data[0];
+            
+            SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");            
+            java.sql.Date date = new java.sql.Date(format.parse(dataCorreta).getTime());
             String SQl = "insert into Feriado(nomeFeriado, dataFeriado) values (?,?)";
 
             pstm = con.prepareStatement(SQl);
             pstm.setString(1, feriado.getTitle());
-            pstm.setString(2, feriado.getStart());
+            pstm.setDate(2, date);
 
             pstm.executeUpdate();
 
             return true;
+        } catch (ParseException ex) {
+            Logger.getLogger(FeriadoDao.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             co.liberar();
         }
+        return false;
     }
 
     /**
@@ -147,7 +157,9 @@ public class FeriadoDao implements FeriadoDaoIF {
                 Feriado feriado = new Feriado();
 
                 String split[] = result.getString("dataferiado").split("-");
-                String data = split[1] + "-" + split[2] + "-" + split[0];
+                int aux = Integer.parseInt(split[2]);
+                aux++;
+                String data = split[1] + "-" + ""+aux + "-" + split[0];
                 System.out.println(data);
 
                 feriado.setTitle(result.getString("nomeFeriado"));

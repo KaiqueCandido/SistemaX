@@ -141,6 +141,10 @@ function importarFeriado() {
     $('#importarFeriado').removeClass('dj-invisible');
 }
 
+function adicionarFeriado() {
+    $('#novoFeriado').removeClass('dj-invisible');
+}
+
 function notNull(x) {
     if (x !== '') {
         return true;
