@@ -48,7 +48,7 @@ public class ControllerAgenda {
 
     @RequestMapping("openCSV")
     public @ResponseBody
-    List OpenCSV(String caminhoArquivo, MultipartFile arquivoCSV) throws SQLException {
+    List OpenCSV(MultipartFile arquivoCSV) throws SQLException {
         GerenciadorDeFeriado gf = new GerenciadorDeFeriado();
         if (!arquivoCSV.isEmpty()){
             try{
@@ -57,20 +57,21 @@ public class ControllerAgenda {
                         new BufferedOutputStream(new FileOutputStream(new File("arquivo.csv")));
                 stream.write(b);
                 stream.close();
+                OpenCSV opencsv = new OpenCSV();
+                //Tem que passar o caminho do arquivo
+                //gf.importaferiado(opencsv.lerCSV(new File()));
+                List eventos = gf.listar();
+                eventos.stream().forEach((evento) -> {
+                    System.out.println(evento);
+                });
+                return eventos;
             }catch (Exception ex){
                 ex.printStackTrace();
             }
-        }else{
-            return new ArrayList();
         }
-        OpenCSV opencsv = new OpenCSV();
-        //Tem que passar o caminho do arquivo
-        //gf.importaferiado(opencsv.lerCSV(new File()));
-        List eventos = gf.listar();
-        eventos.stream().forEach((evento) -> {
-            System.out.println(evento);
-        });
-        return eventos;
+        
+        return new ArrayList();
+        
     }
 
     @RequestMapping("importarFeriado")
