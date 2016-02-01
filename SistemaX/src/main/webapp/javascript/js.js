@@ -6,6 +6,49 @@
 
 $(document).ready(function () {
 
+    $('#calendar').fullCalendar({
+        ignoreTimezone: false,
+        monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+        monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+        dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sabado'],
+        dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'],
+        buttonText: {
+            today: "Hoje",
+            month: "Mês",
+            week: "Semana",
+            day: "Dia"
+        },
+        header: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'month,agendaWeek,agendaDay'
+        },
+        selectable: true,
+        select: function (start, end) {
+            var title = prompt('Event Title:');
+            var eventData;
+            if (title) {
+                eventData = {
+                    title: title,
+                    start: start,
+                    end: end
+                };
+                $('#calendar').fullCalendar('renderEvent', eventData, true); // stick? = true
+            }
+            $('#calendar').fullCalendar('unselect');
+        },
+        editable: true,
+        eventLimit: true,
+        events: {
+            url: 'getEventos.json'
+        }
+    });
+
+
+    idClicado = -1;
+    clique = 0;
+
+
     $('.dj-modal__backdrop').click(function () {
         escondeMenu();
     });
@@ -84,20 +127,16 @@ function adicionarUsuarioAjax() {
         if (!notNull(nome)) {
             alert('Preencha nome');
             $('#nome').focus();
-        }
-        else if (!notNull(senha)) {
+        } else if (!notNull(senha)) {
             alert('Insira uma senha válida');
             $('#senha').focus();
-        }
-        else if (!notNull(email)) {
+        } else if (!notNull(email)) {
             alert('Insira um email válido');
             $('#email').focus();
-        }
-        else if (!notNull(matricula)) {
+        } else if (!notNull(matricula)) {
             alert('Insira uma matrícula');
             $('#matricula').focus();
-        }
-        else {
+        } else {
             alert('Insira o tipo de usuário');
             $('#tipo').focus();
         }
@@ -143,46 +182,34 @@ function notNull(x) {
     }
 }
 
+function liberarBotoes(idUsuario) {
 
+    if (idClicado === -1){
+        $('#edit').removeAttr('disabled');
+        $('#remove').removeAttr('disabled');
+        $('#linha' + idUsuario).addClass('rowSelect');
+        b = false;
+    }else if (idUsuario !== idClicado) {
+        $('#linha'+idClicado).removeClass('rowSelect');
+        $('#linha'+idUsuario).addClass('rowSelect');
+        b = false;
+    }else {
+        $('#linha'+idUsuario).removeClass('rowSelect');
+        $('#edit').attr('disabled', '');
+        $('#remove').attr('disabled', '');
+        b = true;
+    }
 
-$(document).ready(function () {
+    idClicado = idUsuario;
 
-    $('#calendar').fullCalendar({
-        ignoreTimezone: false,
-        monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
-        monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
-        dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sabado'],
-        dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'],
-        buttonText: {
-            today: "Hoje",
-            month: "Mês",
-            week: "Semana",
-            day: "Dia"
-        },
-        header: {
-            left: 'prev,next today',
-            center: 'title',
-            right: 'month,agendaWeek,agendaDay'
-        },
-        selectable: true,
-        select: function (start, end) {
-            var title = prompt('Event Title:');
-            var eventData;
-            if (title) {
-                eventData = {
-                    title: title,
-                    start: start,
-                    end: end
-                };
-                $('#calendar').fullCalendar('renderEvent', eventData, true); // stick? = true
-            }
-            $('#calendar').fullCalendar('unselect');
-        },
-        editable: true,
-        eventLimit: true,
-        events: {
-            url: 'getEventos.json'
-        }
-    });
+    if (b){
+        idClicado = -1;
+    }
+}
 
-});
+function setarCheckbox(idUsuario) {
+
+    $('.checkAutomatic').removeAttr('checked');
+    $('#checkbox' + idUsuario).attr('checked');
+
+}

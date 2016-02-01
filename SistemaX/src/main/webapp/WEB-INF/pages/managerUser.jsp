@@ -24,7 +24,7 @@
                     <button class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect mdl-button--raised margin " onclick="adicionarUsuario()">
                         <img src="Icons/ic_add_black_24dp_2x.png" class="material-icons">
                     </button>
-                    <button class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect mdl-button--raised margin" disabled="" onclick="editarUsuario()">
+                    <button class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect mdl-button--raised margin" disabled="" onclick="editarUsuario()" id="edit">
                         <img src="Icons/ic_edit_black_24dp_2x.png" class="material-icons">
                     </button>
                     <button class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect mdl-button--raised margin" disabled="" id="remove">
@@ -49,7 +49,6 @@
                 <table id="tabela" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp dj-tabela__big">
                     <thead>
                         <tr>
-                            <th></th>
                             <th>Nome</th>
                             <th>Email</th>
                             <th>Papel</th>
@@ -58,12 +57,7 @@
                     </thead>
                     <tbody>
                         <c:forEach items="${usuarios}" var="usuario">
-                            <tr id="kaique">
-                                <td class="dj-size__small">
-                                    <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox${usuario.id}">
-                                        <input type="checkbox" id="checkbox${usuario.id}" class="mdl-checkbox__input" onclick="liberarButoes(${usuario.id})">
-                                    </label>
-                                </td>
+                            <tr id="linha${usuario.id}" onclick="liberarBotoes(${usuario.id})" class="">
                                 <td>${usuario.nome}</td>
                                 <td>${usuario.email}</td>
                                 <td>${usuario.tipo}</td>

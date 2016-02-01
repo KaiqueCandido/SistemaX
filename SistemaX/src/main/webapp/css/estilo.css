@@ -160,3 +160,7 @@ a:hover{
 .calendario {
     margin: 20px;
 }
+
+.rowSelect {
+    background: #e1dada;
+}
