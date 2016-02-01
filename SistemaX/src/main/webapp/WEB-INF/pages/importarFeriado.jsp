@@ -16,7 +16,7 @@
                     
                    
             <div class="botoes-fechar dj-text__right">
-                <button type="submit" class="mdl-button mdl-button mdl-button--colored mdl-button--raised" onclick="adicionarUsuarioAjax()">Importar</button>
+                <button type="submit" class="mdl-button mdl-button mdl-button--colored mdl-button--raised" onclick="adicionarFeriadosAjax()">Importar</button>
                 <div class="mdl-spinner mdl-spinner--single-color mdl-js-spinner is-active dj-invisible" id="loading"></div>
             </div>
             <br>

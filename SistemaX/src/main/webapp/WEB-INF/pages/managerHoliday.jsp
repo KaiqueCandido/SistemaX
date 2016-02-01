@@ -29,25 +29,14 @@
                     <button class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect mdl-button--raised margin" disabled="" id="remove" onclick="removerFeriado()">
                         <img src="Icons/trash.png" class="material-icons">
                     </button>
+                </div>
+                <div class="dj-text__right ">
                     <button class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect mdl-button--raised margin" id="importa" onclick="importarFeriado()">
-                        <img src="Icons/trash.png" class="material-icons">
+                        <img src="Icons/ic_file_upload_black_24dp_2x.png" class="material-icons">Importar Feriados
                     </button>
                 </div>
-                <div class="dj-text__right menuSearch">
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
-                         mdl-textfield--floating-label mdl-textfield--align-right dj-spacer__rigth--menor">
-                        <label>Buscar Usuário</label>
-                        <label class="mdl-button mdl-js-button mdl-button--icon"
-                               for="searchUser">
-                            <img src="Icons/ic_search_black_24dp_2x.png" class="material-icons">
-                        </label>
-                        <div class="mdl-textfield__expandable-holder">
-                            <input class="mdl-textfield__input input-search" type="text" name="sample" id="searchUser" accesskey="b">
-                        </div>
-                    </div>
-                </div>
-                <div class="dj-tabela__overflow">
-
+                <br>
+                <div class="calendario">
                     <div id="calendar"></div>                    
                 </div>
             </div>
