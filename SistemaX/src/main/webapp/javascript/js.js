@@ -86,7 +86,7 @@ $(document).ready(function () {
         formData.append("idUsuario", idClicado);
         
         $.ajax({
-            url: 'ajaxUser',
+            url: 'retornaUsuario',
             type: 'POST',
             data: formData,
             processData: false,
@@ -97,8 +97,8 @@ $(document).ready(function () {
             complete: function () {
                 
             },
-            success: function (res) {
-                console.log(res);
+            success: function (usuario) {
+                console.log(usuario);
             },
             error: function () {
                 

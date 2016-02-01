@@ -13,6 +13,7 @@ import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  *
@@ -66,5 +67,11 @@ public class ControllerUser {
         gu.atualizar(u);
         req.getSession().setAttribute("usuarioLogado", gu.pesquisarPorId(usuario.getId()));
         return "home";
+    }
+    
+    @RequestMapping("retornarUsuario")
+    public @ResponseBody Usuario retornaUser(int idUsuario) throws SQLException{
+        GerenciadorDeUsuario gu = new GerenciadorDeUsuario();
+        return gu.pesquisarPorId(idUsuario);
     }
 }
