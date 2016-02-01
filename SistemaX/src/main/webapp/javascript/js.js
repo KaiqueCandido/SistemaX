@@ -79,6 +79,16 @@ $(document).ready(function () {
         jQuery(".btn-upload2").text(arq);
     });
     
+    //upload do csv
+    jQuery(".btn-uploadCsv").click(function () {
+        jQuery(".inp-uploadCsv").trigger('click');
+    });
+
+    jQuery(".inp-uploadCsv").change(function () {
+        var arq = jQuery(".inp-uploadCsv").val().replace(/^.*\\/, "");
+        jQuery(".btn-uploadCsv").text(arq);
+    });
+    
     $('#edit').click(function (){
         
         var formData = new FormData();
