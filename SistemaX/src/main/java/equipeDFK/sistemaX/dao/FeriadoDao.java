@@ -80,15 +80,17 @@ public class FeriadoDao implements FeriadoDaoIF {
 
         try {
 
-            //Date data = feriado.getDataFeriado();
-            //java.sql.Date dataConvertida = new java.sql.Date(data.getTime());
+            SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+            java.sql.Date date = new java.sql.Date(format.parse(feriado.getStart()).getTime());
             String SQL = "delete from Feriado where dataFeriado=?";
 
             pstm = con.prepareStatement(SQL);
-            pstm.setString(1, feriado.getStart());
+            pstm.setDate(1, date);
 
             pstm.executeUpdate();
 
+        } catch (ParseException ex) {
+            Logger.getLogger(FeriadoDao.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             co.liberar();
         }
@@ -174,23 +176,38 @@ public class FeriadoDao implements FeriadoDaoIF {
         }
     }
 
-    public boolean importaferiado(List feriados) throws SQLException {
+    public boolean importaferiado(List feriados, boolean condicao) throws SQLException {
         try {
-            for (Object feriado : feriados) {
+            if (condicao) {
+                for (Object feriado : feriados) {
 
-                String SQl = "insert into Feriado(nomeFeriado, dataFeriado) values (?,?)";
+                    Feriado fer = (Feriado) feriado;
+                    SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+                    java.sql.Date date = new java.sql.Date(format.parse(fer.getStart()).getTime());
+                    String SQL = "delete from Feriado where dataFeriado=?";
 
-                Feriado f = (Feriado) feriado;
-                SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-                java.sql.Date date = new java.sql.Date(format.parse(f.getStart()).getTime());
-                pstm = con.prepareStatement(SQl);
-                pstm.setString(1, f.getTitle());
-                pstm.setDate(2, date);
+                    pstm = con.prepareStatement(SQL);
+                    pstm.setDate(1, date);
 
-                pstm.executeUpdate();
+                    pstm.executeUpdate();
+                }
+            } else {
+                for (Object feriado : feriados) {
+
+                    String SQl = "insert into Feriado(nomeFeriado, dataFeriado) values (?,?)";
+
+                    Feriado f = (Feriado) feriado;
+                    SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+                    java.sql.Date date = new java.sql.Date(format.parse(f.getStart()).getTime());
+                    pstm = con.prepareStatement(SQl);
+                    pstm.setString(1, f.getTitle());
+                    pstm.setDate(2, date);
+
+                    pstm.executeUpdate();
+                }
+
+                return true;
             }
-
-            return true;
         } catch (ParseException ex) {
             Logger.getLogger(FeriadoDao.class.getName()).log(Level.SEVERE, null, ex);
         } finally {

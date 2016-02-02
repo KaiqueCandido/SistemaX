@@ -71,10 +71,10 @@ public class GerenciadorDeFeriado {
         FeriadoDaoIF feriadoDao = fabrica.criaFeriadoDao();
         return feriadoDao.listar();
     }
-    
-    public boolean importaferiado(List feriados) throws SQLException {
+
+    public boolean importaferiado(List feriados, boolean condicao) throws SQLException {
         DaoFactoryIF fabrica = DaoFactory.creatFactory();
         FeriadoDaoIF feriadoDao = fabrica.criaFeriadoDao();
-        return feriadoDao.importaferiado(feriados);
+        return feriadoDao.importaferiado(feriados, condicao);
     }
 }

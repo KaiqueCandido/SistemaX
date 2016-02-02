@@ -14,6 +14,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -24,7 +25,11 @@ public class ClasseTeste {
 
     public static void main(String[] args) throws SQLException, FileNotFoundException {
         GerenciadorDeFeriado gf = new GerenciadorDeFeriado();
-        gf.cadastrar(new Feriado("teste", "2016-02-08", null, null));
+        List<Feriado> f = new ArrayList<>();
+        f.add(new Feriado("Natal", "25/12/2015", null, null));
+        f.add(new Feriado("Natal", "05/2/2016", null, null));
+        gf.importaferiado(f, true);
+        
 
     }
 
