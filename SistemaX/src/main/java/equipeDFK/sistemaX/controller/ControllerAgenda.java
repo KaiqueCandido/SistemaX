@@ -50,19 +50,19 @@ public class ControllerAgenda {
         if (!arquivoCSV.isEmpty()) {
             try {
                 byte[] b = arquivoCSV.getBytes();
-                String caminho = req.getServletContext().getRealPath("/")+arquivoCSV.getOriginalFilename();
+                String caminho = req.getServletContext().getRealPath("/") + arquivoCSV.getOriginalFilename();
                 System.out.println(caminho);
                 BufferedOutputStream stream
                         = new BufferedOutputStream(new FileOutputStream(new File(caminho)));
                 stream.write(b);
                 stream.close();
                 OpenCSV opencsv = new OpenCSV();
-                if (sobrescrever){
-                    
-                }else{
-                    
+                if (sobrescrever) {
+
+                } else {
+
                 }
-                gf.importaferiado(opencsv.lerCSV(new File(caminho)));
+                gf.importaferiado(opencsv.lerCSV(new File(caminho)), sobrescrever);
                 List eventos = gf.listar();
                 eventos.stream().forEach((evento) -> {
                     System.out.println(evento);
