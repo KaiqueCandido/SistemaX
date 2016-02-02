@@ -48,12 +48,12 @@ public class ControllerAgenda {
 
     @RequestMapping("openCSV")
     public @ResponseBody
-    List OpenCSV(MultipartFile arquivoCSV) throws SQLException {
+    String OpenCSV(MultipartFile arquivoCSV, HttpServletRequest req) throws SQLException {
         GerenciadorDeFeriado gf = new GerenciadorDeFeriado();
         if (!arquivoCSV.isEmpty()){
             try{
                 byte[] b = arquivoCSV.getBytes();
-                System.out.println();
+                
                 BufferedOutputStream stream = 
                         new BufferedOutputStream(new FileOutputStream(new File(arquivoCSV.getOriginalFilename())));
                 stream.write(b);
@@ -65,13 +65,15 @@ public class ControllerAgenda {
                 eventos.stream().forEach((evento) -> {
                     System.out.println(evento);
                 });
-                return eventos;
+                req.getSession().setAttribute("feriados", eventos);
+                
+                return "Importado com sucesso.";
             }catch (Exception ex){
                 ex.printStackTrace();
             }
         }
         
-        return new ArrayList();
+        return "Erro ao importar";
         
     }
 
