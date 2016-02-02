@@ -54,7 +54,7 @@ public class ControllerAgenda {
             try{
                 byte[] b = arquivoCSV.getBytes();
                 BufferedOutputStream stream = 
-                        new BufferedOutputStream(new FileOutputStream(new File("arquivo.csv")));
+                        new BufferedOutputStream(new FileOutputStream(new File("./arquivo.csv")));
                 stream.write(b);
                 stream.close();
                 OpenCSV opencsv = new OpenCSV();
