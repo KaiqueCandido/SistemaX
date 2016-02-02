@@ -47,7 +47,7 @@ public class ControllerAgenda {
     }
 
     @RequestMapping("openCSV")
-    public String OpenCSV(MultipartFile arquivoCSV) throws SQLException {
+    public String OpenCSV(MultipartFile arquivoCSV, HttpServletRequest req) throws SQLException {
         GerenciadorDeFeriado gf = new GerenciadorDeFeriado();
         if (!arquivoCSV.isEmpty()) {
             try {
@@ -63,11 +63,12 @@ public class ControllerAgenda {
                 List eventos = gf.listar();
                 eventos.stream().forEach((evento) -> {
                     System.out.println(evento);
-                });                
+                });
+                req.getSession().setAttribute("feriados", eventos);
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
-        }       
+        }
         return "managerHoliday";
     }
 
