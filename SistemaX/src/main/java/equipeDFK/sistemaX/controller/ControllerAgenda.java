@@ -11,9 +11,7 @@ import equipeDFK.sistemaX.openCSV.OpenCSV;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
@@ -52,14 +50,15 @@ public class ControllerAgenda {
         if (!arquivoCSV.isEmpty()) {
             try {
                 byte[] b = arquivoCSV.getBytes();
-                System.out.println();
+                String caminho = req.getServletContext().getRealPath("/")+arquivoCSV.getOriginalFilename();
+                System.out.println(caminho);
                 BufferedOutputStream stream
-                        = new BufferedOutputStream(new FileOutputStream(new File(arquivoCSV.getOriginalFilename())));
+                        = new BufferedOutputStream(new FileOutputStream(new File(caminho)));
                 stream.write(b);
                 stream.close();
                 OpenCSV opencsv = new OpenCSV();
                 //Tem que passar o caminho do arquivo
-                gf.importaferiado(opencsv.lerCSV(new File(arquivoCSV.getOriginalFilename())));
+                gf.importaferiado(opencsv.lerCSV(new File(caminho)));
                 List eventos = gf.listar();
                 eventos.stream().forEach((evento) -> {
                     System.out.println(evento);
