@@ -15,11 +15,13 @@
     <div class="menuUsuario dj-text__right">
         <div class="dj-float__left">
             <h4>${usuarioLogado.nome}</h4>
-            <a href="#" onclick="editarUsuario()">Editar Perfil</a><label> |</label>
+            <a href="#" onclick="editarUsuario()">Editar Perfil</a><label> | </label>
             <a href="deslogar">Sair</a>
         </div>
         <div class="">
             <img src="imagens/perfil-face.jpg" alt="foto do perfil" title="${usuarioLogado.nome}" class="img-perfil__home">
         </div>
     </div>
+            <%@include file="editarPerfil.jsp" %>
 </header>
+            

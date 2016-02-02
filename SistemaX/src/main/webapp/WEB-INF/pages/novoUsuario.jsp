@@ -13,10 +13,10 @@
         <form action="addUsuario" method="post">
 
             <div class="dj-text__center carregaImagem margin">
-                <img src="imagens/perfil-face.jpg" class="img-perfil__carregar" id="image"><br><br>
+                <img src="imagens/perfil-face.jpg" class="img-perfil__carregar" id="imageUsuarioNovo"><br><br>
                 <button class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect btn-upload">Enviar foto</button>
                 <br><br><br>
-                <input type="file" class="dj-invisible inp-upload" name="foto" onchange="updateLogo(this)"/>
+                <input type="file" class="dj-invisible inp-upload" name="foto" onchange="updateLogoUsuarioNovo(this)"/>
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                     <input type="text" class="mdl-textfield__input" name="nome" id="nome" title="Não pode conter caracteres especiais ou numeros." pattern="[^!@#$%¨&*0-9]{1,100}" required="" autofocus="">
                     <label class="mdl-textfield__label" for="nome">Nome de usuário</label>
@@ -57,10 +57,10 @@
 <div class="dj-modal__backdrop"></div>
 </div>
 <script>
-    function updateLogo(input) {
-        var reader = new FileReader(this);
+    function updateLogoUsuarioNovo(input) {
+        var reader = new FileReader(input);
         reader.onload = function (e) {
-            $("#image").attr("src", e.target.result);
+            $("#imageUsuarioNovo").attr("src", e.target.result);
         };
         reader.readAsDataURL(input.files[0]);
     }
