@@ -14,7 +14,7 @@
             <img src="imagens/perfil-face.jpg" class="img-perfil__carregar" id="imagePerfil"><br><br>
             <button class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect btn-upload__perfil">Enviar foto</button>
             <br><br><br>
-            <form action="atualizarUsuarioAtual" method="post">
+            <form action="atualizarPerfil" method="post">
                 <h6>${erro}</h6>
                 <input type="file" class="dj-invisible inp-upload__perfil" name="foto" onchange="updateLogoPerfil(this)"/>
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">

@@ -36,7 +36,7 @@ $(document).ready(function () {
 
             if (event) {
                 var moment = $('#calendar').fullCalendar('getDate').format();
-                alert(moment.year());
+               
                 
                 liberarBotoesFeriados();
                 $('#nomeFeriado').val(event.title);

@@ -11,9 +11,10 @@
 );
 
 CREATE TABLE Feriado(
+	idFeriado SERIAL NOT NULL,
 	nomeFeriado VARCHAR(60) NOT NULL,
 	dataFeriado DATE NOT NULL,
-	PRIMARY KEY(nomeFeriado, dataFeriado)
+	PRIMARY KEY(idFeriado)
 );
 
 insert into Usuario(email, nomeDeUsuario, senha, Matricula, tipo, status) values ('email@email.com', 'root', 'xs123chg', '000000', 'ADMINISTRADOR', 'Ativo');
