@@ -6,7 +6,7 @@
 package equipeDFK.sistemaX.entidades;
 
 /**
- *
+ * Classe que representa a entidade Feriado
  * @author NandaPC
  */
 public class Feriado {
@@ -16,9 +16,19 @@ public class Feriado {
     private String end;
     private String url;
 
+    /**
+     * Construtor default
+     */
     public Feriado() {
     }
 
+    /**
+     * Construtor com parâmetros
+     * @param title
+     * @param start
+     * @param end
+     * @param url 
+     */
     public Feriado(String title, String start, String end, String url) {
         this.title = title;
         this.start = start;

@@ -16,12 +16,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
- *
+ * Classe responsável pelas requisições de usuário
  * @author Dijalma Silva <dijalmacz@gmail.com>
  */
 @Controller
 public class ControllerUser {
     
+    /**
+     * Método que recebe uma requisição de adicionar um novo usuário
+     * @param req
+     * @param u
+     * @return 
+     */
     @RequestMapping("addUsuario")
     public String addUsuario(HttpServletRequest req, Usuario u)  {
         GerenciadorDeUsuario gu = new GerenciadorDeUsuario();
@@ -42,6 +48,13 @@ public class ControllerUser {
         return "managerUser";
     }
     
+    /**
+     *  Método que recebe uma requisição para atualizar um usuário já existente
+     * @param req
+     * @param u
+     * @return
+     * @throws SQLException 
+     */
     @RequestMapping("atualizarUsuario")
     public String editUsuario(HttpServletRequest req, Usuario u) throws SQLException {
         GerenciadorDeUsuario gu = new GerenciadorDeUsuario();
@@ -49,7 +62,14 @@ public class ControllerUser {
         req.getSession().setAttribute("usuarios", gu.listar());
         return "managerUser";
     }
-    
+
+    /**
+     *  Método que recebe uma requisição para remover um usuário existente
+     * @param req
+     * @param id
+     * @return
+     * @throws SQLException 
+     */
     @RequestMapping("removerUsuario")
     public String removerUsuario(HttpServletRequest req, int id) throws SQLException {
         GerenciadorDeUsuario gu = new GerenciadorDeUsuario();
@@ -59,6 +79,14 @@ public class ControllerUser {
         return "managerUser";
     }
     
+    /**
+     * Método que recebe uma requisição para atualizar o perfil do usuário
+     * autenticado no sistema
+     * @param req
+     * @param u
+     * @return
+     * @throws SQLException 
+     */
     @RequestMapping("atualizarPerfil")
     public String editCurrentUsuario(HttpServletRequest req, Usuario u) throws SQLException {
         GerenciadorDeUsuario gu = new GerenciadorDeUsuario();
@@ -69,6 +97,13 @@ public class ControllerUser {
         return "home";
     }
     
+    /**
+     * Método que recebe uma requisição para retornar um usuário selecionado 
+     * na aplicação.
+     * @param idUsuario
+     * @return
+     * @throws SQLException 
+     */
     @RequestMapping("retornarUsuario")
     public @ResponseBody Usuario retornaUser(int idUsuario) throws SQLException{
         GerenciadorDeUsuario gu = new GerenciadorDeUsuario();

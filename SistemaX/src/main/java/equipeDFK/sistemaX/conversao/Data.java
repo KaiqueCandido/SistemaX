@@ -10,11 +10,16 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- *
+ * Classe Data, responsável pelas formatações de datas.
  * @author NandaPC
  */
-
 public class Data {
+    
+    /**
+     * Método que recebe uma string e retorna uma data do tipo {@linkplain Date}
+     * @param date
+     * @return {@linkplain Date}
+     */
     public Date stringParaDate(String date){
         Date data = null;
         try {

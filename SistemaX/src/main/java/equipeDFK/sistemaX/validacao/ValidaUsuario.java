@@ -8,16 +8,24 @@ package equipeDFK.sistemaX.validacao;
 import equipeDFK.sistemaX.entidades.Usuario;
 
 /**
+ * Classe para validação de usuário
  *
  * @author kaique
  */
 public class ValidaUsuario {
 
+    /**
+     * Método que valida o nome de usuário, verificando se contém algum
+     * caractere inválido
+     *
+     * @param usuario
+     * @return boolean
+     */
     public boolean validaNomeDeUsuario(Usuario usuario) {
         // Validação de Nome de Usuario
 
         //Verifica se o nome de usuario contem algum caractere invalido
-        String caracteresEspeciais[] = {"!","%", "-", "$", "_", "#", "@", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", " "};
+        String caracteresEspeciais[] = {"!", "%", "-", "$", "_", "#", "@", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", " "};
         for (int i = 0; i < caracteresEspeciais.length; i++) {
             if (usuario.getNome().contains(caracteresEspeciais[i])) {
                 return false;
@@ -26,6 +34,13 @@ public class ValidaUsuario {
         return true;
     }
 
+    /**
+     *  Método que valida a senha, verificando o tamanho da senha,
+     * se contém caractere maiúsculo e caracteres não alfabéticos
+     * 
+     * @param usuario
+     * @return boolean
+     */
     public boolean validaSenha(Usuario usuario) {
         // Validação da senha
 
@@ -60,12 +75,15 @@ public class ValidaUsuario {
         return true;
     }
 
+    /**
+     *  Método que válida a matrícula, vereficando se possui seis caracteres
+     * 
+     * @param usuario
+     * @return 
+     */
     public boolean validaMatricula(Usuario usuario) {
         // Validação de matricula
         //Verifica o tamanho da matricula
-        if (usuario.getMatricula().length() == 6) {
-            return true;
-        }
-        return false;
+        return usuario.getMatricula().length() == 6;
     }
 }

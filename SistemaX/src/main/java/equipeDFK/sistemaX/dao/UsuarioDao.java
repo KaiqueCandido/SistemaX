@@ -11,6 +11,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Classe entidade Usuario que persiste seus dados no banco de dados
+ * @author Dijalma Silva <dijalmacz@gmail.com>
+ */
 public class UsuarioDao implements UsuarioDaoIF {
 
     ConnectionFactory factory = new ConnectionFactory();
@@ -18,6 +22,9 @@ public class UsuarioDao implements UsuarioDaoIF {
     Connection con;
     PreparedStatement pstm;
 
+    /**
+     * Construtor Default
+     */
     public UsuarioDao() {
         try {
             con = co.abrir();
@@ -25,6 +32,12 @@ public class UsuarioDao implements UsuarioDaoIF {
         }
     }
 
+    /**
+     * Método que persiste um novo usuário no banco de dados.
+     * @param u
+     * @return boolean
+     * @throws SQLException 
+     */
     @Override
     public boolean cadastrar(Usuario u) throws SQLException {
         try {
@@ -47,6 +60,11 @@ public class UsuarioDao implements UsuarioDaoIF {
         }
     }
 
+    /**
+     * Método que remove um usuário do banco de dados.
+     * @param u
+     * @throws SQLException 
+     */
     @Override
     public void remover(Usuario u) throws SQLException {
         try {
@@ -61,6 +79,11 @@ public class UsuarioDao implements UsuarioDaoIF {
         }
     }
 
+    /**
+     * Método que atualiza as informações do usuário no banco de dados.
+     * @param u
+     * @throws SQLException 
+     */
     @Override
     public void atualizar(Usuario u) throws SQLException {
         try {
@@ -82,6 +105,13 @@ public class UsuarioDao implements UsuarioDaoIF {
         }
     }
 
+    /**
+     * Método que retorna um usuário a partir de uma busca pelo nome do usuario 
+     * no banco de dados.
+     * @param nome
+     * @return {@linkplain Usuario}
+     * @throws SQLException 
+     */
     @Override
     public Usuario pesquisarPorNomeDeUsuario(String nome) throws SQLException {
         try {
@@ -111,6 +141,13 @@ public class UsuarioDao implements UsuarioDaoIF {
         }
     }
 
+    /**
+     * Método que retorna um usuário a partir de uma busca pelo email do usuario 
+     * no banco de dados.
+     * @param email
+     * @return {@linkplain Usuario}
+     * @throws SQLException 
+     */
     @Override
     public Usuario pesquisarPorEmail(String email) throws SQLException {
         try {
@@ -140,6 +177,13 @@ public class UsuarioDao implements UsuarioDaoIF {
         }
     }
 
+    /**
+     * Método que retorna um usuário a partir de uma busca pela matrícula do usuario 
+     * no banco de dados.
+     * @param matricula
+     * @return {@linkplain Usuario}
+     * @throws SQLException 
+     */
     @Override
     public Usuario pesquisarPorMatricula(String matricula) throws SQLException {
         try {
@@ -169,6 +213,14 @@ public class UsuarioDao implements UsuarioDaoIF {
         }
     }
     
+    /**
+     * Método que retorna um usuário a partir de uma busca pelo id do usuario 
+     * no banco de dados.
+     * @param id
+     * @return {@linkplain Usuario}
+     * @throws SQLException 
+     */
+    @Override
     public Usuario pesquisarPorId(int id) throws SQLException {
         try {
             String SQL = "select * from usuario where id = '" + id + "'";
@@ -197,6 +249,15 @@ public class UsuarioDao implements UsuarioDaoIF {
         }
     }
 
+    /**
+     * Faz uma busca no banco de dados afim de achar um usuário com os
+     * parâmetros passados, e então retorná-lo, e ainda pode ser feita tanto 
+     * pelo nome ou email do usuário.
+     * @param login
+     * @param senha
+     * @return {@linkplain Usuario}
+     * @throws SQLException 
+     */
     @Override
     public Usuario logar(String login, String senha) throws SQLException {
         try {
@@ -230,6 +291,11 @@ public class UsuarioDao implements UsuarioDaoIF {
         }
     }
 
+    /**
+     * Método que retorna todos os usuários guardados no banco de dados.
+     * @return {@linkplain List<Usuario>}
+     * @throws SQLException 
+     */
     @Override
     public List<Usuario> listar() throws SQLException {
         try {

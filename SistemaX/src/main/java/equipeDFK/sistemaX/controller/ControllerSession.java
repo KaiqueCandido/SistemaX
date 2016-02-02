@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ControllerSession {
    
     /**
-     * Controla o login no sistema
+     * Método que recebe uma requisição para autenticar um usuário no sistema
      * @param usuarioOuEmail
      * @param senha 
      * @param req 
@@ -40,9 +40,16 @@ public class ControllerSession {
         return "home";
     }
     
+    /**
+     * Método que recebe uma requisição para desaunteticar o usuário do sistema
+     * e todos atributos 
+     * @param req
+     * @return
+     * @throws SQLException 
+     */
     @RequestMapping("deslogar")
     public String logout(HttpServletRequest req) throws SQLException{                    
-        req.getSession().setAttribute("usuario", null);
+        req.getSession().invalidate();
         return "index";
     }
     

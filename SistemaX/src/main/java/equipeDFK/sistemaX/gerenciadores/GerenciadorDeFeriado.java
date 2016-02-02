@@ -9,8 +9,6 @@ import equipeDFK.sistemaX.entidades.Feriado;
 import equipeDFK.sistemaX.fabricas.DaoFactory;
 import equipeDFK.sistemaX.fabricas.DaoFactoryIF;
 import equipeDFK.sistemaX.interfaces.FeriadoDaoIF;
-import equipeDFK.sistemaX.openCSV.OpenCSV;
-import java.io.File;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -21,9 +19,11 @@ import java.util.List;
 public class GerenciadorDeFeriado {
 
     /**
+     * Método que cadastra um feriado e retorna um valor booleano true para
+     * sucesso false para erro
      *
      * @param feriado
-     * @return
+     * @return boolean
      * @throws SQLException
      */
     public boolean cadastrar(Feriado feriado) throws SQLException {
@@ -33,6 +33,7 @@ public class GerenciadorDeFeriado {
     }
 
     /**
+     * Método que remove um feriado
      *
      * @param feriado
      * @throws SQLException
@@ -44,6 +45,7 @@ public class GerenciadorDeFeriado {
     }
 
     /**
+     * Método que atualiza um feriado
      *
      * @param feriado
      * @throws SQLException
@@ -55,9 +57,11 @@ public class GerenciadorDeFeriado {
     }
 
     /**
+     * Método que faz uma busca a partir de uma data e retorna um
+     * {@linkplain Feriado}
      *
      * @param dataFeriado
-     * @return
+     * @return {@linkplain Feriado}
      * @throws SQLException
      */
     public Feriado pesquisar(String dataFeriado) throws SQLException {
@@ -66,12 +70,26 @@ public class GerenciadorDeFeriado {
         return feriadoDao.pesquisarFeriado(dataFeriado);
     }
 
+    /**
+     * Método que retorna todos os feriados
+     *
+     * @return {@linkplain List}
+     * @throws SQLException
+     */
     public List<Feriado> listar() throws SQLException {
         DaoFactoryIF fabrica = DaoFactory.creatFactory();
         FeriadoDaoIF feriadoDao = fabrica.criaFeriadoDao();
         return feriadoDao.listar();
     }
 
+    /**
+     * Método que adiciona os feriados lidos por um arquivo CSV
+     *
+     * @param feriados
+     * @param condicao
+     * @return
+     * @throws SQLException
+     */
     public boolean importaferiado(List feriados, boolean condicao) throws SQLException {
         DaoFactoryIF fabrica = DaoFactory.creatFactory();
         FeriadoDaoIF feriadoDao = fabrica.criaFeriadoDao();

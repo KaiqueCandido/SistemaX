@@ -15,11 +15,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Classe utilizada para leitura de arquivo CSV
  *
  * @author kaique
  */
 public class OpenCSV {
 
+    /**
+     * Método usado para ler um arquivo csv e retornar uma {@linkplain List} de feriados
+     *
+     * @param filename
+     * @return {@linkplain List}
+     */
     public List<Feriado> lerCSV(File filename) {
         try {
 

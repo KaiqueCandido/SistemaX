@@ -9,6 +9,10 @@ import java.sql.SQLException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
+/**
+ * Classe ConnectionFactory
+ * @author Dijalma Silva <dijalmacz@gmail.com>
+ */
 public class ConnectionFactory {
 
     private final String url;
@@ -17,6 +21,9 @@ public class ConnectionFactory {
     private final String driver;
     private static ConnectionFactory instance = null;
 
+    /**
+     * Construtor
+     */
     public ConnectionFactory() {
         this.url = "jdbc:postgresql://localhost:5432/SistemaX";
         this.password = "123";
@@ -24,6 +31,10 @@ public class ConnectionFactory {
         this.driver = "org.postgresql.Driver";
     }
 
+    /**
+     * Método que retorna uma instance do tipo ConnectionFactory
+     * @return {@linkplain ConnectionFactory}
+     */
     public static ConnectionFactory getInstance() {
         if (instance == null) {
             instance = new ConnectionFactory();
@@ -31,6 +42,11 @@ public class ConnectionFactory {
         return instance;
     }
 
+    /**
+     * Método que retorna um objeto do tipo Connection
+     * @return {@linkplain Connection}
+     * @throws SQLException 
+     */
     public Connection getConnection() throws SQLException {
         try {
             Class.forName(this.driver);

@@ -10,7 +10,8 @@ import java.sql.SQLException;
 import java.util.List;
 
 /**
- *
+ *  Interface FeriadoDaoIF
+ * 
  * @author NandaPC
  */
 public interface FeriadoDaoIF {

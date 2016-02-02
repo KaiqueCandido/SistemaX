@@ -21,12 +21,16 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
- *
+ * Classe que trata todas as requisições para gerenciar os feriados
  * @author kaique
  */
 @Controller
 public class ControllerAgenda {
 
+    /**
+     * Método que recebe uma requisição para retornar a página managerHoliday
+     * @return {@linkplain ModelAndView}
+     */
     @RequestMapping(value = "montaAgenda")
     public ModelAndView MontaAgenda() {
 
@@ -35,6 +39,12 @@ public class ControllerAgenda {
         return mv;
     }
 
+    /**
+     * Método que recebe uma requisição para retornar a lista de feriados
+     * cadastrados
+     * @return {@linkplain List}
+     * @throws SQLException 
+     */
     @RequestMapping(value = "getEventos.json")
     public @ResponseBody
     List GetEventos() throws SQLException {
@@ -44,6 +54,15 @@ public class ControllerAgenda {
         return eventos;
     }
 
+    /**
+     * Método que recebe uma requisição para importar os feriados,
+     * então ler o arquivo CSV e depois persistir os dados no banco
+     * @param arquivoCSV
+     * @param sobrescrever
+     * @param req
+     * @return String
+     * @throws SQLException 
+     */
     @RequestMapping("openCSV")
     public String OpenCSV(MultipartFile arquivoCSV, boolean sobrescrever, HttpServletRequest req) throws SQLException {
         GerenciadorDeFeriado gf = new GerenciadorDeFeriado();
@@ -75,11 +94,27 @@ public class ControllerAgenda {
         return "managerHoliday";
     }
 
+    /**
+     * Método que recebe uma requisição para importar os feriados
+     * Obs: Não utilizado
+     * @param req
+     * @param caminhoArquivo
+     * @return
+     * @throws SQLException 
+     */
     @RequestMapping("importarFeriado")
     public String importarFeriado(HttpServletRequest req, String caminhoArquivo) throws SQLException {
         return "importarFeriado";
     }
 
+    /**
+     * Método que rebece um novo feriado pela requisição e depois cadastrada
+     * esse feriado no banco de dados, e após isso retorna a página
+     * managerHoliday.
+     * @param req
+     * @return String
+     * @throws SQLException 
+     */
     @RequestMapping("novoFeriado")
     public String novoFeriado(HttpServletRequest req) throws SQLException {
         GerenciadorDeFeriado gf = new GerenciadorDeFeriado();
@@ -89,6 +124,14 @@ public class ControllerAgenda {
     }
 
     
+    /**
+     *  Método que recebe uma requisição para editar um feriado já existente, e 
+     * depois retorna a página managerHoliday.
+     * @param req
+     * @param f
+     * @return
+     * @throws SQLException 
+     */
     @RequestMapping("editarFeriado")
     public String editarFeriado(HttpServletRequest req, Feriado f ) throws SQLException{
         GerenciadorDeFeriado gf = new GerenciadorDeFeriado();
@@ -96,6 +139,14 @@ public class ControllerAgenda {
         return "managerHoliday";
     }
     
+    /**
+     * Método que recebe uma requisição para remover um feriado existente, e 
+     * depois retorna a página managerHoliday.
+     * @param req
+     * @param f
+     * @return
+     * @throws SQLException 
+     */
     @RequestMapping("removerFeriado")
     public String removerFeriado(HttpServletRequest req, Feriado f) throws SQLException{
         GerenciadorDeFeriado gf = new GerenciadorDeFeriado();

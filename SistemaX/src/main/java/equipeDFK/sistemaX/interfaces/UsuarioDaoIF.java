@@ -4,6 +4,11 @@ import equipeDFK.sistemaX.entidades.Usuario;
 import java.sql.SQLException;
 import java.util.List;
 
+/**
+ * Interface UsuarioDaoIF
+ * 
+ * @author Dijalma Silva <dijalmacz@gmail.com>
+ */
 public interface UsuarioDaoIF {
 
     public boolean cadastrar(Usuario u) throws SQLException;

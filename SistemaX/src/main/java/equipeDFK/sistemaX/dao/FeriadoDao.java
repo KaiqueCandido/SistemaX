@@ -22,7 +22,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
+ * Classe que gerencia as informações de Feriado no banco de dados.
  * @author NandaPC
  */
 public class FeriadoDao implements FeriadoDaoIF {
@@ -32,6 +32,9 @@ public class FeriadoDao implements FeriadoDaoIF {
     Connection con;
     PreparedStatement pstm;
 
+    /**
+     * Construtor default
+     */
     public FeriadoDao() {
         try {
             con = co.abrir();
@@ -40,9 +43,10 @@ public class FeriadoDao implements FeriadoDaoIF {
     }
 
     /**
-     *
+     * Cadastra um novo feriado no banco de dados, e é feita as conversões de 
+     * data do tipo {@linkplain String} para {@linkplain Date}.
      * @param feriado
-     * @return
+     * @return boolean
      * @throws SQLException
      */
     @Override
@@ -71,7 +75,7 @@ public class FeriadoDao implements FeriadoDaoIF {
     }
 
     /**
-     *
+     * Remove um feriado persistido no banco de dados
      * @param feriado
      * @throws SQLException
      */
@@ -98,7 +102,7 @@ public class FeriadoDao implements FeriadoDaoIF {
     }
 
     /**
-     *
+     * Atualiza as informações de um feriado persistido no banco de dados.
      * @param feriado
      * @throws SQLException
      */
@@ -120,6 +124,13 @@ public class FeriadoDao implements FeriadoDaoIF {
         }
     }
 
+    /**
+     * Faz um busca no banco de dados na tabela Feriado, a partir de uma data
+     * específica.
+     * @param dataFeriado
+     * @return @{@linkplain Feriado}
+     * @throws SQLException 
+     */
     @Override
     public Feriado pesquisarFeriado(String dataFeriado) throws SQLException {
 
@@ -145,6 +156,11 @@ public class FeriadoDao implements FeriadoDaoIF {
         }
     }
 
+    /**
+     * Lista todos os feriados persistidos no banco de dados
+     * @return @{@linkplain List}
+     * @throws SQLException 
+     */
     public List<Feriado> listar() throws SQLException {
         try {
             String SQL = "select * from feriado";
@@ -176,6 +192,16 @@ public class FeriadoDao implements FeriadoDaoIF {
         }
     }
 
+    /**
+     * Função que importa os feriados no banco de dados a partir de um arquivo
+     * CSV, e ainda recebe uma condição se sobrescreve os Feriados já 
+     * persistidos.
+     * @param feriados
+     * @param condicao
+     * @return boolean
+     * @throws SQLException 
+     */
+    @Override
     public boolean importaferiado(List feriados, boolean condicao) throws SQLException {
         try {
             if (condicao) {

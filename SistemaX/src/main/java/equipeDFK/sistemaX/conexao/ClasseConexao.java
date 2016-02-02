@@ -10,7 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 /**
- *
+ *Classe responsável pela conexão com o banco de dados
  * @author NandaPC
  */
 public class ClasseConexao {
@@ -18,6 +18,11 @@ public class ClasseConexao {
     private Connection conexao;
     private PreparedStatement statment;
 
+    /**
+     * Método que faz a conexão com o banco de dados.
+     * @return {@linkplain Connection}
+     * @throws SQLException 
+     */
     public Connection abrir() throws SQLException {
         if (this.conexao == null || this.conexao.isClosed()) {
             this.conexao = ConnectionFactory.getInstance().getConnection();

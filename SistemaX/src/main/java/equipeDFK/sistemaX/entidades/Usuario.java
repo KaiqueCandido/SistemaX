@@ -16,6 +16,16 @@ public class Usuario {
     private String matricula;
     private String status;
 
+    /**
+     * Construtor com parâmetros
+     * @param email
+     * @param nome
+     * @param senha
+     * @param foto
+     * @param tipo
+     * @param matricula
+     * @param status 
+     */
     public Usuario(String email, String nome, String senha, String foto, String tipo, String matricula, String status) {
         this.email = email;
         this.nome = nome;
