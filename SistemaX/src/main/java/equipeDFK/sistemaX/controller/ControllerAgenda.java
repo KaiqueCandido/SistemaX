@@ -50,19 +50,19 @@ public class ControllerAgenda {
         if (!arquivoCSV.isEmpty()) {
             try {
                 byte[] b = arquivoCSV.getBytes();
-                String caminho = req.getServletContext().getRealPath("/")+arquivoCSV.getOriginalFilename();
+                String caminho = req.getServletContext().getRealPath("/") + arquivoCSV.getOriginalFilename();
                 System.out.println(caminho);
                 BufferedOutputStream stream
                         = new BufferedOutputStream(new FileOutputStream(new File(caminho)));
                 stream.write(b);
                 stream.close();
                 OpenCSV opencsv = new OpenCSV();
-                if (sobrescrever){
-                    
-                }else{
-                    
+                if (sobrescrever) {
+
+                } else {
+
                 }
-                gf.importaferiado(opencsv.lerCSV(new File(caminho)));
+                gf.importaferiado(opencsv.lerCSV(new File(caminho)), sobrescrever);
                 List eventos = gf.listar();
                 eventos.stream().forEach((evento) -> {
                     System.out.println(evento);
@@ -79,7 +79,7 @@ public class ControllerAgenda {
     public String importarFeriado(HttpServletRequest req, String caminhoArquivo) throws SQLException {
         return "importarFeriado";
     }
-    
+
     @RequestMapping("novoFeriado")
     public String novoFeriado(HttpServletRequest req) throws SQLException {
         GerenciadorDeFeriado gf = new GerenciadorDeFeriado();

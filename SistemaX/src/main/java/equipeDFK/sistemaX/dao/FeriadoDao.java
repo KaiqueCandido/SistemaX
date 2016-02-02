@@ -191,6 +191,19 @@ public class FeriadoDao implements FeriadoDaoIF {
 
                     pstm.executeUpdate();
                 }
+                for (Object feriado : feriados) {
+
+                    String SQl = "insert into Feriado(nomeFeriado, dataFeriado) values (?,?)";
+
+                    Feriado f = (Feriado) feriado;
+                    SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+                    java.sql.Date date = new java.sql.Date(format.parse(f.getStart()).getTime());
+                    pstm = con.prepareStatement(SQl);
+                    pstm.setString(1, f.getTitle());
+                    pstm.setDate(2, date);
+
+                    pstm.executeUpdate();
+                }
             } else {
                 for (Object feriado : feriados) {
 
