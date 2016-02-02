@@ -88,4 +88,19 @@ public class ControllerAgenda {
         return "managerHoliday";
     }
 
+    
+    @RequestMapping("editarFeriado")
+    public String editarFeriado(HttpServletRequest req, Feriado f ) throws SQLException{
+        GerenciadorDeFeriado gf = new GerenciadorDeFeriado();
+        gf.atualizar(f);
+        return "managerHoliday";
+    }
+    
+    @RequestMapping("removerFeriado")
+    public String removerFeriado(HttpServletRequest req, Feriado f) throws SQLException{
+        GerenciadorDeFeriado gf = new GerenciadorDeFeriado();
+        gf.remover(f);
+        return "managerHoliday";
+    }
+    
 }

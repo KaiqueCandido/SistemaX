@@ -24,24 +24,28 @@ $(document).ready(function () {
             right: 'month,agendaWeek,agendaDay'
         },
         selectable: true,
-        select: function (start, end) {
-            var title = prompt('Event Title:');
-            var eventData;
-            if (title) {
-                eventData = {
-                    title: title,
-                    start: start,
-                    end: end
-                };
-                $('#calendar').fullCalendar('renderEvent', eventData, true); // stick? = true
-            }
-            $('#calendar').fullCalendar('unselect');
+        select: function (start, end, event) {
+            fecharBotoesFeriados();
         },
         editable: true,
         eventLimit: true,
         events: {
             url: 'getEventos.json'
+        },
+        eventClick: function (event, element) {
+
+            if (event) {
+                var moment = $('#calendar').fullCalendar('getDate').format();
+                alert(moment.year());
+                
+                liberarBotoesFeriados();
+                $('#nomeFeriado').val(event.title);
+                $('#dataFeriado').val(data);
+                alert($('#nomeFeriado').val());
+                alert($('#dataFeriado').val());
+            }
         }
+
     });
 
 
@@ -69,7 +73,7 @@ $(document).ready(function () {
         var arq = jQuery(".inp-upload").val().replace(/^.*\\/, "");
         jQuery(".btn-upload").text(arq);
     });
-    
+
     jQuery(".btn-upload__perfil").click(function () {
         jQuery(".inp-upload__perfil").trigger('click');
     });
@@ -78,7 +82,7 @@ $(document).ready(function () {
         var arq = jQuery(".inp-upload__perfil").val().replace(/^.*\\/, "");
         jQuery(".btn-upload").text(arq);
     });
-    
+
     jQuery(".btn-upload2").click(function () {
         jQuery(".inp-upload2").trigger('click');
     });
@@ -87,7 +91,7 @@ $(document).ready(function () {
         var arq = jQuery(".inp-upload2").val().replace(/^.*\\/, "");
         jQuery(".btn-upload2").text(arq);
     });
-    
+
     //upload do csv
     jQuery(".btn-uploadCsv").click(function () {
         jQuery(".inp-uploadCsv").trigger('click');
@@ -97,7 +101,6 @@ $(document).ready(function () {
         var arq = jQuery(".inp-uploadCsv").val().replace(/^.*\\/, "");
         jQuery(".btn-uploadCsv").text(arq);
     });
-    
 
 });
 
@@ -141,6 +144,14 @@ function adicionarFeriado() {
     $('#novoFeriado').removeClass('dj-invisible');
 }
 
+function editarFeriado() {
+    $('#subEditaFeriado').trigger('click');
+}
+
+function removerFeriado() {
+    $('#subRemoveFeriado').trigger('click');
+}
+
 function notNull(x) {
     if (x !== '') {
         return true;
@@ -151,17 +162,17 @@ function notNull(x) {
 
 function liberarBotoes(idUsuario) {
 
-    if (idClicado === -1){
+    if (idClicado === -1) {
         $('#edit').removeAttr('disabled');
         $('#remove').removeAttr('disabled');
         $('#linha' + idUsuario).addClass('rowSelect');
         b = false;
-    }else if (idUsuario !== idClicado) {
-        $('#linha'+idClicado).removeClass('rowSelect');
-        $('#linha'+idUsuario).addClass('rowSelect');
+    } else if (idUsuario !== idClicado) {
+        $('#linha' + idClicado).removeClass('rowSelect');
+        $('#linha' + idUsuario).addClass('rowSelect');
         b = false;
-    }else {
-        $('#linha'+idUsuario).removeClass('rowSelect');
+    } else {
+        $('#linha' + idUsuario).removeClass('rowSelect');
         $('#edit').attr('disabled', '');
         $('#remove').attr('disabled', '');
         b = true;
@@ -169,7 +180,7 @@ function liberarBotoes(idUsuario) {
 
     idClicado = idUsuario;
 
-    if (b){
+    if (b) {
         idClicado = -1;
     }
 }
@@ -181,11 +192,22 @@ function setarCheckbox(idUsuario) {
 
 }
 
-function removerUsuario(){
-    
+function removerUsuario() {
+
     b = window.confirm("Deseja realmente remover este usuário?");
-    if (b){
+    if (b) {
         $('#removeUsuario').val(idClicado);
         $('#subRemoveUsuario').trigger('click');
     }
+}
+
+function liberarBotoesFeriados() {
+
+    $('#edit').removeAttr('disabled');
+    $('#remove').removeAttr('disabled');
+}
+
+function fecharBotoesFeriados() {
+    $('#edit').attr("disabled", " ");
+    $('#remove').attr("disabled", " ");
 }

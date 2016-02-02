@@ -24,7 +24,7 @@
                     <button class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect mdl-button--raised margin " onclick="adicionarFeriado()">
                         <img src="Icons/ic_add_black_24dp_2x.png" class="material-icons">
                     </button>
-                    <button class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect mdl-button--raised margin" disabled="" onclick="editarFeriado()">
+                    <button class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect mdl-button--raised margin" disabled="" onclick="editarFeriado()" id="edit">
                         <img src="Icons/ic_edit_black_24dp_2x.png" class="material-icons">
                     </button>
                     <button class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect mdl-button--raised margin" disabled="" id="remove" onclick="removerFeriado()">
@@ -42,6 +42,17 @@
                 </div>
             </div>
         </div>
+        <form class="dj-invisible" action="removerFeriado" method="post">
+            <input type="text" name="title" id="nomeFeriado">
+            <input type="date" name="start" id="dataFeriado">
+            <input type="submit" id="subRemoveFeriado">
+        </form>
+        <form class="dj-invisible" action="editarFeriado" method="post">
+            <input type="text" name="title" id="nomeFeriado">
+            <input type="text" name="start" id="dataFeriado">
+            <input type="submit" id="subEditaFeriado">
+        </form>
+        
     </div>
 </body>
 </html>
