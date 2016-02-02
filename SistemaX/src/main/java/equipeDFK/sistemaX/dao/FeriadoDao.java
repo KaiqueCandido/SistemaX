@@ -47,11 +47,11 @@ public class FeriadoDao implements FeriadoDaoIF {
      */
     @Override
     public boolean cadastrar(Feriado feriado) throws SQLException {
-        try {            
+        try {
             String data[] = feriado.getStart().split("-");
             String dataCorreta = data[2] + "/" + data[1] + "/" + data[0];
-            
-            SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");            
+
+            SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
             java.sql.Date date = new java.sql.Date(format.parse(dataCorreta).getTime());
             String SQl = "insert into Feriado(nomeFeriado, dataFeriado) values (?,?)";
 
@@ -159,7 +159,7 @@ public class FeriadoDao implements FeriadoDaoIF {
                 String split[] = result.getString("dataferiado").split("-");
                 int aux = Integer.parseInt(split[2]);
                 aux++;
-                String data = split[1] + "-" + ""+aux + "-" + split[0];
+                String data = split[1] + "-" + "" + aux + "-" + split[0];
                 System.out.println(data);
 
                 feriado.setTitle(result.getString("nomeFeriado"));
@@ -181,17 +181,22 @@ public class FeriadoDao implements FeriadoDaoIF {
                 String SQl = "insert into Feriado(nomeFeriado, dataFeriado) values (?,?)";
 
                 Feriado f = (Feriado) feriado;
+                SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+                java.sql.Date date = new java.sql.Date(format.parse(f.getStart()).getTime());
                 pstm = con.prepareStatement(SQl);
                 pstm.setString(1, f.getTitle());
-                pstm.setString(2, f.getStart());
+                pstm.setDate(2, date);
 
                 pstm.executeUpdate();
             }
 
             return true;
+        } catch (ParseException ex) {
+            Logger.getLogger(FeriadoDao.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             co.liberar();
         }
+        return false;
     }
 
 }

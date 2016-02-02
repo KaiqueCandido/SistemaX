@@ -42,20 +42,19 @@ public class ControllerAgenda {
     List GetEventos() throws SQLException {
         GerenciadorDeFeriado gf = new GerenciadorDeFeriado();
         List eventos = gf.listar();
-        
+
         return eventos;
     }
 
     @RequestMapping("openCSV")
-    public @ResponseBody
-    List OpenCSV(MultipartFile arquivoCSV) throws SQLException {
+    public String OpenCSV(MultipartFile arquivoCSV) throws SQLException {
         GerenciadorDeFeriado gf = new GerenciadorDeFeriado();
-        if (!arquivoCSV.isEmpty()){
-            try{
+        if (!arquivoCSV.isEmpty()) {
+            try {
                 byte[] b = arquivoCSV.getBytes();
                 System.out.println();
-                BufferedOutputStream stream = 
-                        new BufferedOutputStream(new FileOutputStream(new File(arquivoCSV.getOriginalFilename())));
+                BufferedOutputStream stream
+                        = new BufferedOutputStream(new FileOutputStream(new File(arquivoCSV.getOriginalFilename())));
                 stream.write(b);
                 stream.close();
                 OpenCSV opencsv = new OpenCSV();
@@ -64,15 +63,12 @@ public class ControllerAgenda {
                 List eventos = gf.listar();
                 eventos.stream().forEach((evento) -> {
                     System.out.println(evento);
-                });
-                return eventos;
-            }catch (Exception ex){
+                });                
+            } catch (Exception ex) {
                 ex.printStackTrace();
             }
-        }
-        
-        return new ArrayList();
-        
+        }       
+        return "managerHoliday";
     }
 
     @RequestMapping("importarFeriado")
