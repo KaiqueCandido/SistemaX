@@ -45,7 +45,7 @@ public class ControllerAgenda {
     }
 
     @RequestMapping("openCSV")
-    public String OpenCSV(MultipartFile arquivoCSV, HttpServletRequest req) throws SQLException {
+    public String OpenCSV(MultipartFile arquivoCSV, boolean sobrescrever, HttpServletRequest req) throws SQLException {
         GerenciadorDeFeriado gf = new GerenciadorDeFeriado();
         if (!arquivoCSV.isEmpty()) {
             try {
@@ -57,7 +57,11 @@ public class ControllerAgenda {
                 stream.write(b);
                 stream.close();
                 OpenCSV opencsv = new OpenCSV();
-                //Tem que passar o caminho do arquivo
+                if (sobrescrever){
+                    
+                }else{
+                    
+                }
                 gf.importaferiado(opencsv.lerCSV(new File(caminho)));
                 List eventos = gf.listar();
                 eventos.stream().forEach((evento) -> {

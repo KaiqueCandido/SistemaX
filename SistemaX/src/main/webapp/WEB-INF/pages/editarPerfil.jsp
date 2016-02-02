@@ -11,12 +11,12 @@
             <hr>
         </div>
         <div class="dj-text__center carregaImagem margin">
-            <img src="imagens/perfil-face.jpg" class="img-perfil__carregar" id="image"><br><br>
-            <button class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect btn-upload">Enviar foto</button>
+            <img src="imagens/perfil-face.jpg" class="img-perfil__carregar" id="imagePerfil"><br><br>
+            <button class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect btn-upload__perfil">Enviar foto</button>
             <br><br><br>
             <form action="atualizarUsuarioAtual" method="post">
                 <h6>${erro}</h6>
-                <input type="file" class="dj-invisible inp-upload" name="foto" onchange="updateLogo(this)"/>
+                <input type="file" class="dj-invisible inp-upload__perfil" name="foto" onchange="updateLogoPerfil(this)"/>
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                     <input type="text" class="mdl-textfield__input" name="nome" id="sample1" required="" autofocus="" value=${usuarioLogado.nome}>
                     <label class="mdl-textfield__label" for="sample1">Nome de usuário</label>
@@ -47,10 +47,10 @@
     <div class="dj-modal__backdrop"></div>
 </div>
 <script>
-    function updateLogo(input) {
-        var reader = new FileReader(this);
+    function updateLogoPerfil(input) {
+        var reader = new FileReader(input);
         reader.onload = function (e) {
-            $("#image").attr("src", e.target.result);
+            $("#imagePerfil").attr("src", e.target.result);
         };
         reader.readAsDataURL(input.files[0]);
     }

@@ -70,6 +70,15 @@ $(document).ready(function () {
         jQuery(".btn-upload").text(arq);
     });
     
+    jQuery(".btn-upload__perfil").click(function () {
+        jQuery(".inp-upload__perfil").trigger('click');
+    });
+
+    jQuery(".inp-upload__perfil").change(function () {
+        var arq = jQuery(".inp-upload__perfil").val().replace(/^.*\\/, "");
+        jQuery(".btn-upload").text(arq);
+    });
+    
     jQuery(".btn-upload2").click(function () {
         jQuery(".inp-upload2").trigger('click');
     });
@@ -89,34 +98,6 @@ $(document).ready(function () {
         jQuery(".btn-uploadCsv").text(arq);
     });
     
-    $('#edit').click(function (){
-        
-        var formData = new FormData();
-        
-        formData.append("idUsuario", idClicado);
-        
-        $.ajax({
-            url: 'retornaUsuario',
-            type: 'POST',
-            data: formData,
-            processData: false,
-            contentType: false,
-            beforeSend: function () {
-
-            },
-            complete: function () {
-                
-            },
-            success: function (usuario) {
-                console.log(usuario);
-            },
-            error: function () {
-                
-            }
-        });
-        
-        $('#editarUser').removeClass('dj-invisible');
-    });
 
 });
 
@@ -126,7 +107,7 @@ function escondeMenu() {
 
 
 function editarUsuario() {
-    retornaUsuario();
+    $('#editarUser').removeClass('dj-invisible');
 }
 
 $(function () {

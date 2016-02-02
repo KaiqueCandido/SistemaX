@@ -16,7 +16,7 @@
             <br><br><br>
             <form action="atualizarUsuarioAtual" method="post">
                 <h6>${erro}</h6>
-                <input type="file" class="dj-invisible inp-upload2" name="foto" onchange="updateLogo(this)"/>
+                <input type="file" class="dj-invisible inp-upload2" name="foto" onchange="updateLogoOldUser(this)"/>
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                     <input type="text" class="mdl-textfield__input" name="nome" id="sample1" required="" autofocus="" value=${usuarioSelecionado.nome}>
                     <label class="mdl-textfield__label" for="sample1">Nome de usuário</label>
@@ -47,8 +47,8 @@
     <div class="dj-modal__backdrop"></div>
 </div>
 <script>
-    function updateLogo(input) {
-        var reader = new FileReader(this);
+    function updateLogoOldUser(input) {
+        var reader = new FileReader(input);
         reader.onload = function (e) {
             $("#image2").attr("src", e.target.result);
         };
