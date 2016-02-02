@@ -53,13 +53,14 @@ public class ControllerAgenda {
         if (!arquivoCSV.isEmpty()){
             try{
                 byte[] b = arquivoCSV.getBytes();
+                System.out.println();
                 BufferedOutputStream stream = 
-                        new BufferedOutputStream(new FileOutputStream(new File("./arquivo.csv")));
+                        new BufferedOutputStream(new FileOutputStream(new File(arquivoCSV.getOriginalFilename())));
                 stream.write(b);
                 stream.close();
                 OpenCSV opencsv = new OpenCSV();
                 //Tem que passar o caminho do arquivo
-                //gf.importaferiado(opencsv.lerCSV(new File()));
+                gf.importaferiado(opencsv.lerCSV(new File(arquivoCSV.getOriginalFilename())));
                 List eventos = gf.listar();
                 eventos.stream().forEach((evento) -> {
                     System.out.println(evento);
